@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import Modelos.LoginRespuesta;
+import Modelos.LoginCiudadano;
 import Peticiones.ApiCiudadano;
 import Peticiones.ApiCliente;
 import retrofit2.Call;
@@ -27,15 +27,19 @@ public class MainActivity extends AppCompatActivity {
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
 
-            EditText textCorreo = findViewById(R.id.idCorreo);
+            EditText textUsuario = findViewById(R.id.idUsuario);
             EditText textContraseña = findViewById(R.id.idContraseña);
 
             @Override
             public void onClick(View view) {
-                String correo = textCorreo.getText().toString().trim();
+                String usuario = textUsuario.getText().toString().trim();
                 String contraseña = textContraseña.getText().toString().trim();
-                LoginRespuesta login = new LoginRespuesta(correo, contraseña);
+                Log.e("Contraseña", contraseña);
+                Log.e("usuaio", usuario);
+                LoginCiudadano login = new LoginCiudadano(usuario, contraseña);
                 Call<Integer> call = ApiCliente.GetCliente().create(ApiCiudadano.class).Login(login);
+                Log.e("login", login.getContraseña());
+                Log.e("login", login.getUsuario());
                 call.enqueue(new Callback<Integer>() {
                     @Override
                     public void onResponse(Call<Integer> call, Response<Integer> response) {
