@@ -1,5 +1,6 @@
 package com.opar.opar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,15 +9,18 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
+import Modelos.Ciudadano;
 import Modelos.LoginCiudadano;
 import Peticiones.ApiCiudadano;
 import Peticiones.ApiCliente;
+import ViewModel.CiudadanoViewModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,26 +38,29 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String usuario = textUsuario.getText().toString().trim();
                 String contraseña = textContraseña.getText().toString().trim();
-                Log.e("Contraseña", contraseña);
-                Log.e("usuaio", usuario);
+
                 LoginCiudadano login = new LoginCiudadano(usuario, contraseña);
-                Call<Integer> call = ApiCliente.GetCliente().create(ApiCiudadano.class).Login(login);
-                Log.e("login", login.getContraseña());
-                Log.e("login", login.getUsuario());
-                call.enqueue(new Callback<Integer>() {
+                Call<Ciudadano> call = ApiCliente.GetCliente().create(ApiCiudadano.class).Login(login);
+
+                call.enqueue(new Callback<Ciudadano>() {
                     @Override
-                    public void onResponse(Call<Integer> call, Response<Integer> response) {
-                        if(response.isSuccessful() && response.body() != null){
-                            Toast.makeText(MainActivity.this, response.body().toString(),Toast.LENGTH_LONG).show();
+                    public void onResponse(Call<Ciudadano> call, Response<Ciudadano> response) {
+                        if(response.body() != null){
+                            Ciudadano ciudadano = response.body();
+                            CiudadanoViewModel ciudadanoViewModel = new ViewModelProvider(LoginActivity.this).get(CiudadanoViewModel.class);
+                            ciudadanoViewModel.setCiudadano(ciudadano);
+                            Intent intent = new Intent(LoginActivity.this, RolActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(LoginActivity.this, "Bienvenido",Toast.LENGTH_LONG).show();
                             return;
                         }
 
-                        Toast.makeText(MainActivity.this, "No Tenemos Nada",Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Revisa el usuario o contraseña",Toast.LENGTH_LONG).show();
                     }
 
                     @Override
-                    public void onFailure(Call<Integer> call, Throwable t) {
-                        Toast.makeText(MainActivity.this, "Fallo",Toast.LENGTH_LONG).show();
+                    public void onFailure(Call<Ciudadano> call, Throwable t) {
+                        Toast.makeText(LoginActivity.this, "Fallo",Toast.LENGTH_LONG).show();
                         Log.e("Error 1 ", "Esta fallando ",t);
                     }
                 });
