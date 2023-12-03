@@ -2,6 +2,13 @@ package Modelos;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import Peticiones.ApiCliente;
+import Peticiones.ApiInmueble;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Clase que representa el catalogo de los inmuebles
@@ -11,9 +18,9 @@ import java.util.HashMap;
  */
 public class Catalogo
 {
-
-    static ArrayList<Inmueble> inmuebles = new ArrayList<>();
-    ArrayList<Inmueble> inmueblesFiltrados = new ArrayList<>();
+    public static Catalogo catalogo = new Catalogo();
+    public  List<Inmueble> inmuebles = new ArrayList<>();
+    List<Inmueble> inmueblesFiltrados = new ArrayList<>();
     boolean filtrado;
     /**
      * Constructor para el objeto Catalogo
@@ -22,6 +29,7 @@ public class Catalogo
     public Catalogo()
     {
         this.filtrado = false;
+        this.inmueblesFiltrados = this.ObtenerInmuebles();
     }
 
     /**
@@ -54,11 +62,13 @@ public class Catalogo
      * Devuelve la lista de inmuebles dependiendo del estado que se encuentra
      * @return Lista de inmuebles
      */
-    public ArrayList<Inmueble> ObtenerInmuebles(){
+    public List<Inmueble> ObtenerInmuebles(){
         if(filtrado){
             return this.inmueblesFiltrados;
         }else{
-            return this.inmuebles;
+
+
+            return Catalogo.catalogo.inmuebles;
         }
     }
 
@@ -83,16 +93,15 @@ public class Catalogo
      * Filtra los inmuebles por las caraceristicas deseadas
      * @param filtro HashMap con los atributos y opciones de filtrado
      */
-    public void filtrar(HashMap<String, Object> filtro){
+    public List<Inmueble> filtrar(HashMap<String, Object> filtro){
         this.filtrado = true;
-        this.inmueblesFiltrados.clear();
-        this.inmueblesFiltrados = new ArrayList<>(inmuebles);
-        ArrayList<Inmueble> auxInmuebles = new ArrayList<>();
-        System.out.println(filtro);
+        this.inmueblesFiltrados = this.ObtenerInmuebles();
+        List<Inmueble> auxInmuebles = new ArrayList<>();
+
         if(filtro.containsKey("Precio")){
             boolean menorMayor = false;
             float precio = 0;
-            ArrayList<Object> values = (ArrayList<Object>) filtro.get("Precio");
+            List<Object> values = (ArrayList<Object>) filtro.get("Precio");
             for(Object value : values){
                 if (value instanceof Boolean) {
                     menorMayor = (boolean) value;
@@ -219,6 +228,18 @@ public class Catalogo
             auxInmuebles.clear();
         }
 
+        if(filtro.containsKey("Tipo")){
+            String tipo = (String) filtro.get("Tipo");
+            for(Inmueble inmueble : this.ObtenerInmuebles()){
+                if(inmueble.getTipoInmueble().toLowerCase().equals(tipo.toLowerCase())){
+                    auxInmuebles.add(inmueble);
+                }
+            }
+            this.inmueblesFiltrados = new ArrayList<>(auxInmuebles);
+            auxInmuebles.clear();
+        }
+
+        return this.inmueblesFiltrados;
     }
 
     /**

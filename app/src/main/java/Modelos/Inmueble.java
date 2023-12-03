@@ -22,7 +22,7 @@ public class Inmueble
     private String Direccion;
     private String TelefonoArrendador;
     private float CalificacionPromedio;
-    private String Imagenes;
+
     ArrayList<OpinionInmueble> MisOpiniones = new  ArrayList<>();
 
     /**
@@ -35,13 +35,12 @@ public class Inmueble
      * @param CantidadHabitaciones La cantidad de habitaciones del inmueble
      * @param ServiciosPublicos True si posee servicios publicos
      * @param area El area en metros cuadrados del inmueble
-     * @param Imagenes Imagenes del inmueble
      * @param Descripcion La descripcion del inmueble
      * @param Direccion La direccion del inmueble
      * @param TelefonoArrendador El telefono del arrendador del inmueble
      */
     public Inmueble(String IdInmueble,int IdUsuario, String TipoInmueble, float Precio, String Barrio,
-                    int CantidadHabitaciones, boolean ServiciosPublicos, float area, String Imagenes,
+                    int CantidadHabitaciones, boolean ServiciosPublicos, float area,
                     String Descripcion, String Direccion, String TelefonoArrendador)
     {
         this.TipoInmueble = TipoInmueble;
@@ -53,7 +52,6 @@ public class Inmueble
         this.Descripcion = Descripcion;
         this.Direccion = Direccion;
         this.TelefonoArrendador = TelefonoArrendador;
-        this.Imagenes = Imagenes;
         this.IdInmueble = IdInmueble;
         this.IdUsuario = IdUsuario;
     }
@@ -124,7 +122,6 @@ public class Inmueble
         System.out.println("ServiciosPublicos:" + this.ServiciosPublicos);
         System.out.println("Cantidad Habitaciones:" + this.CantidadHabitaciones);
         System.out.println("Area:" + this.area);
-        System.out.println("Imagenes:" + this.Imagenes);
         System.out.println("Descripcion:" + this.Descripcion);
         System.out.println("Direccion:" + this.Direccion);
         System.out.println("Telefono Arrendador:" + this.TelefonoArrendador);
@@ -152,9 +149,6 @@ public class Inmueble
         this.area = area;
     }
 
-    public void SetImagenes(String Imagenes){
-        this.Imagenes = Imagenes;
-    }
 
     public void SetDescripcion(String Descripcion){
         this.Descripcion = Descripcion;
@@ -209,5 +203,30 @@ public class Inmueble
 
     public ArrayList<OpinionInmueble> GetMisOpiniones(){
         return MisOpiniones;
+    }
+
+    public String getTipoInmueble() {
+        return TipoInmueble;
+    }
+
+    public void setTipoInmueble(String tipoInmueble) {
+        TipoInmueble = tipoInmueble;
+    }
+
+    @Override
+    public String toString() {
+        return "Inmueble{" +
+                "IdInmueble='" + IdInmueble + '\'' +
+                ", TipoInmueble='" + TipoInmueble + '\'' +
+                ", IdUsuario=" + IdUsuario +
+                ", Precio=" + Precio +
+                ", Barrio='" + Barrio + '\'' +
+                ", CantidadHabitaciones=" + CantidadHabitaciones +
+                ", ServiciosPublicos=" + ServiciosPublicos +
+                ", area=" + area +
+                ", Descripcion='" + Descripcion + '\'' +
+                ", Direccion='" + Direccion + '\'' +
+                ", TelefonoArrendador='" + TelefonoArrendador + '\'' +
+                '}';
     }
 }

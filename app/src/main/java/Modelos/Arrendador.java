@@ -30,15 +30,13 @@ public class Arrendador extends Ciudadano
      * @param CantidadHabitaciones El numero de habitaciones del inmueble
      * @param ServiciosPublicos Si incluye servicios publicos el inmueble
      * @param Area Las dimensiones del inmueble
-     * @param Imagenes Imagenes de muestra del inmueble
      * @param Descripcion Descripcion dada por el usuario
      * @param Direccion La direccion del inmueble
-     * @param TelefonoArrendador Numero de contacto del arrendador
      * @return El inmueble nuevo
      */
     public void agregarInmueble(String IdInmueble, String TipoInmueble, float Precio,
                                 String Barrio, int CantidadHabitaciones, boolean ServiciosPublicos,
-                                float Area, String Imagenes, String Descripcion,
+                                float Area, String Descripcion,
                                 String Direccion){
         if (IdInmueble.isEmpty()) {
             System.out.println("Error: IdInmueble no puede estar vacío");
@@ -58,7 +56,7 @@ public class Arrendador extends Ciudadano
         }
         Inmueble inmueble = new Inmueble(IdInmueble, this.GetIdUsuario(), TipoInmueble, Precio,
                 Barrio, CantidadHabitaciones, ServiciosPublicos,
-                Area, Imagenes, Descripcion,
+                Area, Descripcion,
                 Direccion,  this.NumeroContacto);
 
         this.MisInmuebles.add(inmueble);
@@ -67,16 +65,6 @@ public class Arrendador extends Ciudadano
 
     /**
      * Edita un Inmueble seleccionado
-     * @param TipoInmueble El tipo de inmueble que pertenece
-     * @param Precio El precio de alquiler del inmueble
-     * @param Barrio El barrio al que pertenece el inmueble
-     * @param CantidadHabitaciones El numero de habitaciones del inmueble
-     * @param ServiciosPublicos Si incluye servicios publicos el inmueble
-     * @param Area Las dimensiones del inmueble
-     * @param Imagenes Imagenes de muestra del inmueble
-     * @param Descripcion Descripcion dada por el usuario
-     * @param Direccion La direccion del inmueble
-     * @param TelefonoArrendador Numero de contacto del arrendador
      * @return El inmueble totalmente editado
      */
     public Inmueble editarInmueble(String IdInmueble){
@@ -150,11 +138,6 @@ public class Arrendador extends Ciudadano
                 System.out.println("Atributo Editado");
             }
 
-            if(Option == 7){
-                System.out.println("Ingresa las nuevas imagenes");
-                editadoInmueble.SetImagenes(lecturaString.nextLine());
-                System.out.println("Atributo Editado");
-            }
 
             if(Option == 8){
                 System.out.println("Escribe la nueva descripcion");
@@ -256,7 +239,7 @@ public class Arrendador extends Ciudadano
                 System.out.print("Direccion: ");
                 String Direccion = lectura.nextLine();
 
-                agregarInmueble(IdInmueble, TipoInmueble, Precio, Barrio, CantidadHabitaciones, ServiciosPublicos, Area, Imagenes, Descripcion, Direccion);
+                agregarInmueble(IdInmueble, TipoInmueble, Precio, Barrio, CantidadHabitaciones, ServiciosPublicos, Area, Descripcion, Direccion);
                 System.out.println("Inmueble agregado exitosamente.");
             }
 

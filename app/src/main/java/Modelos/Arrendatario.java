@@ -1,8 +1,16 @@
 package Modelos;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.HashMap;
+
+import Peticiones.ApiCliente;
+import Peticiones.ApiInmueble;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * Clase que representa al rol de Arrendatario.
@@ -121,135 +129,32 @@ public class Arrendatario extends Ciudadano
      * Obtener todos los Inmuebles del Catalogo
      * @return Lista de Inmuebles Obtenidos
      */
-
-    public void verCatalogoInmubles()
+    public List<Inmueble> verCatalogoInmubles()
     {
-        Scanner lecturaString = new Scanner(System.in);
-        Scanner lecturaInt= new Scanner(System.in);
-        ArrayList<Inmueble> inmuebles =  catalogo.ObtenerInmuebles();
-        int opt;
-        for(int i=0;i<inmuebles.size(); i++){
-            System.out.println("------------------------");
-            inmuebles.get(i).mostrarDatos();
-            System.out.println("------------------------");
-        }
-
-        do{
-            System.out.println("¿Accion Desea realizar?");
-            System.out.println("1.Seleccionar un Inmueble");
-            System.out.println("2.Filtrar");
-            System.out.println("0.Salir");
-            opt = lecturaInt.nextInt();
-
-            if(opt == 1){
-                System.out.println("¿Que inmueble deseas selecionar?");
-                System.out.println("(Digita el Id del Inmueble)");
-                seleccionarInmueble(lecturaString.nextLine());
-            }
-
-            if(opt == 2){
-                this.filtrarInmuebles();
-            }
-
-        }while(opt != 0);
+        List<Inmueble> inmuebles = Catalogo.catalogo.ObtenerInmuebles();
+        return inmuebles;
 
     }
 
     /**
      * Obtenemos los inmuebles que cumplan con el atributo dado
-     * @param Atributo Valor por el que se van a filtrar los inmuebles
      * @return Lista de Inmuebles que cumplan con ese atributo
      */
-    public void filtrarInmuebles()
+    public List<Inmueble> filtrarInmuebles(String atributo, Object valor, Object mayorMenor)
     {
         HashMap<String, Object> misFiltros = new HashMap<>();
-        Scanner lecturaInt= new Scanner(System.in);
-        Scanner lecturaString= new Scanner(System.in);
-        Scanner lecturaBoolean= new Scanner(System.in);
-        int opt;
 
-        do{
-            System.out.println("¿Deseas filtrar?");
-            System.out.println("1.Precio");
-            System.out.println("2.Barrio");
-            System.out.println("3.Cantidad Habitaciones");
-            System.out.println("4.Servicios Publicos");
-            System.out.println("5.Area");
-            System.out.println("6.Calificacion Promedio");
-            System.out.println("7.Buscar");
-            System.out.println("8.Limpiar Filtro");
-            System.out.println("0.Salir");
-            opt = lecturaInt.nextInt();
+        if(mayorMenor != null){
+            Boolean condicion  = (Boolean) mayorMenor;
+            List<Object> elementos = new ArrayList<>();
+            elementos.add(condicion);
+            elementos.add(valor);
+            misFiltros.put(atributo,elementos);
+        }else{
+            misFiltros.put(atributo,valor);
+        }
 
-            if(opt == 1){
-                System.out.println("Precio mayor o menor");
-                System.out.println("(Escribe true si deseeas que busque precios mayores o false si deseeas que busque precios menores)");
-                boolean mayorMenor = lecturaBoolean.nextBoolean();
-                System.out.println("Cual es el Precio que deseas filtrar");
-                float precio = lecturaInt.nextFloat();
-                ArrayList<Object> elementos = new ArrayList<>();
-                elementos.add(mayorMenor);
-                elementos.add(precio);
-                misFiltros.put("Precio",elementos);
-            }
-
-            if(opt == 2){
-                System.out.println("¿Por cual Barrio Deseas buscar?");
-                String barrio = lecturaString.nextLine();
-                misFiltros.put("Barrio",barrio);
-            }
-
-            if(opt == 3){
-                System.out.println("¿Cuantas Habitaciones deseas?");
-                int habitaciones = lecturaInt.nextInt();
-                misFiltros.put("Habitaciones",habitaciones);
-            }
-
-            if(opt == 4){
-                System.out.println("¿Deseas que incluya servicios?");
-                boolean servicios = lecturaBoolean.nextBoolean();
-                misFiltros.put("Servicios",servicios);
-            }
-
-            if(opt == 5){
-                System.out.println("¿Area mayor o menor?");
-                System.out.println("(Escribe true si deseeas que busque areas mayores o false si deseeas que busque areas menores)");
-                boolean mayorMenor = lecturaBoolean.nextBoolean();
-                System.out.println("Cual es el area que deseas filtrar");
-                float area = lecturaInt.nextFloat();
-                ArrayList<Object> elementos = new ArrayList<>();
-                elementos.add(mayorMenor);
-                elementos.add(area);
-                misFiltros.put("Area",area);
-            }
-
-            if(opt == 6){
-                System.out.println("¿Calficacion mayor o menor?");
-                System.out.println("(Escribe true si deseeas que busque calificaciones mayores o false si deseeas que busque calificaiones menores)");
-                boolean mayorMenor = lecturaBoolean.nextBoolean();
-                System.out.println("Cual es la calificacion que deseas filtrar");
-                float calificacion = lecturaInt.nextFloat();
-                ArrayList<Object> elementos = new ArrayList<>();
-                elementos.add(mayorMenor);
-                elementos.add(calificacion);
-                misFiltros.put("Calificacion",elementos);
-            }
-
-            if(opt == 7){
-                if(catalogo.GetFiltrado()){
-                    catalogo.filtrar(misFiltros);
-                }else{
-                    verCatalogoInmubles();
-                }
-
-            }
-
-            if(opt == 8){
-                catalogo.limpiarFiltro();
-            }
-
-        }while(opt != 0);
-
+        return Catalogo.catalogo.filtrar(misFiltros);
     }
 
     /**
