@@ -25,7 +25,8 @@ public class RolActivity extends AppCompatActivity {
         btnArrendador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(RolActivity.this, ArrendadorActivity.class);
+                startActivity(intent);
             }
         });
 
