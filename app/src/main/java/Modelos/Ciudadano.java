@@ -11,28 +11,70 @@ import java.io.Serializable;
  */
 public class Ciudadano implements Serializable
 {
-    private int IdUsuario;
-    private String Nombre;
-    private String Cedula ;
-    String NumeroContacto;
-    /**
-     * Constructor para el objeto Ciudadano
-     * @param IdUsuario Identificador del ciudadano
-     * @param Nombre El nombre completo asociado al ciudadano
-     * @param Cedula Numero de documento del ciudadano
-     * @param Cedula Numero de celular del ciudadano
-     */
-    public Ciudadano(int IdUsuario, String Nombre, String Cedula, String NumeroContacto)
-    {
-        // initialise instance variables
-        this.IdUsuario = IdUsuario;
-        this.Nombre = Nombre;
-        this.Cedula = Cedula;
-        this.NumeroContacto = NumeroContacto;
+    private String numeroDocumento;
+    private String nombreCompleto;
+    private String usuario;
+    private String contraseña;
+    private String telefono;
+
+
+    public Ciudadano(String numeroDocumento, String nombreCompleto, String usuario, String contraseña, String telefono) {
+        this.numeroDocumento = numeroDocumento;
+        this.nombreCompleto = nombreCompleto;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
+        this.telefono = telefono;
     }
 
-    public int GetIdUsuario(){
-        return this.IdUsuario;
+    public String getNumeroDocumento() {
+        return numeroDocumento;
+    }
+
+    public void setNumeroDocumento(String numeroDocumento) {
+        this.numeroDocumento = numeroDocumento;
+    }
+
+    public String getNombreCompleto() {
+        return nombreCompleto;
+    }
+
+    public void setNombreCompleto(String nombreCompleto) {
+        this.nombreCompleto = nombreCompleto;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    @Override
+    public String toString() {
+        return "Ciudadano{" +
+                "numeroDocumento='" + numeroDocumento + '\'' +
+                ", nombreCompleto='" + nombreCompleto + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
     }
 }
 

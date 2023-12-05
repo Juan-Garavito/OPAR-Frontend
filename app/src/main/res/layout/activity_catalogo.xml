@@ -5,4 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#021A26"
-    tools:context=".CatalogoActivity"/>
+    tools:context=".CatalogoActivity"
+    android:id="@+id/frameLayout">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#609966"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/graduate"
+        android:text="OPAR"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="66dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar3"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_blanco" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCatalogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar7"
+        tools:layout_conversion_absoluteHeight="147dp"
+        tools:layout_conversion_absoluteWidth="411dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

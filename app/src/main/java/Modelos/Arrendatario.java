@@ -27,13 +27,10 @@ public class Arrendatario extends Ciudadano
 
     /**
      * Constructor para el objeto Arrendatario
-     * @param IdUsuario Identificador del ciudadano
-     * @param Nombre El nombre completo asociado al ciudadano
-     * @param Cedula Numero de documento del ciudadano
      */
-    public Arrendatario(int IdUsuario, String Nombre, String Cedula, String NumeroContacto)
+    public Arrendatario(String numeroDocumento, String nombreCompleto, String usuario, String contraseña, String telefono)
     {
-        super(IdUsuario, Nombre, Cedula, NumeroContacto);
+        super(numeroDocumento, nombreCompleto,  usuario,  contraseña,  telefono);
     }
 
     /**
@@ -44,7 +41,7 @@ public class Arrendatario extends Ciudadano
      * @param Calificacion Es la calificacion de tu opinion
      * @return Una nueva Opinion del Inmueble
      */
-    public void agregarOpinion(int IdOpinion, String IdInmuble, int IdUsuario,
+    public void agregarOpinion(int IdOpinion, Integer IdInmuble, int IdUsuario,
                                String Comentario, float Calificacion)
     {
         if (Calificacion < 0 || Calificacion > 5) {
@@ -55,7 +52,7 @@ public class Arrendatario extends Ciudadano
         OpinionInmueble opinion = new OpinionInmueble(IdOpinion, IdInmuble, IdUsuario, Comentario, Calificacion);
         this.MisOpiniones.add(opinion);
         Inmueble inmuebleSeleccionado = catalogo.obtenerInmueblePorId(IdInmuble);
-        inmuebleSeleccionado.agregarOpinion(opinion);
+       //inmuebleSeleccionado.agregarOpinion(opinion);
         System.out.println("Opinion Agregada");
     }
 
@@ -103,8 +100,8 @@ public class Arrendatario extends Ciudadano
         this.MisOpiniones.remove(i);
         this.MisOpiniones.add(opinionEditada);
         Inmueble inmueble = catalogo.obtenerInmueblePorId(opinionEditada.GetIdInmueble());
-        inmueble.eliminarOpinion(IdOpinion);
-        inmueble.agregarOpinion(opinionEditada);
+        //inmueble.eliminarOpinion(IdOpinion);
+        //inmueble.agregarOpinion(opinionEditada);
 
         return opinionEditada;
     }
@@ -131,7 +128,8 @@ public class Arrendatario extends Ciudadano
      */
     public List<Inmueble> verCatalogoInmubles()
     {
-        List<Inmueble> inmuebles = Catalogo.catalogo.ObtenerInmuebles();
+        //List<Inmueble> inmuebles = Catalogo.catalogo.ObtenerInmuebles();
+        List<Inmueble> inmuebles = null;
         return inmuebles;
 
     }
@@ -140,21 +138,15 @@ public class Arrendatario extends Ciudadano
      * Obtenemos los inmuebles que cumplan con el atributo dado
      * @return Lista de Inmuebles que cumplan con ese atributo
      */
-    public List<Inmueble> filtrarInmuebles(String atributo, Object valor, Object mayorMenor)
+    public HashMap<String, Object> filtrarInmuebles(List<String> atributo, List<Object> valor)
     {
         HashMap<String, Object> misFiltros = new HashMap<>();
 
-        if(mayorMenor != null){
-            Boolean condicion  = (Boolean) mayorMenor;
-            List<Object> elementos = new ArrayList<>();
-            elementos.add(condicion);
-            elementos.add(valor);
-            misFiltros.put(atributo,elementos);
-        }else{
-            misFiltros.put(atributo,valor);
+        for(int i=0; i<atributo.size(); i++){
+            misFiltros.put(atributo.get(i),valor.get(i));
         }
 
-        return Catalogo.catalogo.filtrar(misFiltros);
+        return misFiltros;
     }
 
     /**
@@ -163,7 +155,7 @@ public class Arrendatario extends Ciudadano
      * @return El inmueble seleccionado con todos sus atributos
      */
 
-    public void seleccionarInmueble(String IdInmueble)
+    /*public void seleccionarInmueble(Integer IdInmueble)
     {
         Scanner lecturaInt= new Scanner(System.in);
         Scanner lecturaString= new Scanner(System.in);
@@ -172,7 +164,7 @@ public class Arrendatario extends Ciudadano
 
         System.out.println("------------------------");
         System.out.println("Este es el Inmueble que se seleccionate");
-        inmuebleSeleccionado.mostrarDatos();
+        //inmuebleSeleccionado.mostrarDatos();
         System.out.println("------------------------");
 
         do{
@@ -186,7 +178,7 @@ public class Arrendatario extends Ciudadano
             opt = lecturaInt.nextInt();
 
             if(opt == 1){
-                inmuebleSeleccionado.mostarOpinones();
+                //inmuebleSeleccionado.mostarOpinones();
             }
 
             if(opt == 2){
@@ -197,13 +189,13 @@ public class Arrendatario extends Ciudadano
                 System.out.println("Ingrese la Calificacion deseada");
                 float Calificacion = lecturaInt.nextFloat();
                 int IdUsuario = this.GetIdUsuario();
-                String IdInmuble = inmuebleSeleccionado.GetIdInmueble();
+                Integer IdInmuble = inmuebleSeleccionado.getIdInmueble();
 
-                this.agregarOpinion(IdOpinion, IdInmuble, IdUsuario, Comentario, Calificacion);
+                this.agregarOpinion(IdOpinion, 1, IdUsuario, Comentario, Calificacion);
             }
 
             if(opt == 3){
-                String numero = inmuebleSeleccionado.GetTelefonoArrendador();
+               // String numero = inmuebleSeleccionado.GetTelefonoArrendador();
                 System.out.println("LLamando a....");
                 System.out.println(numero);
             }
@@ -232,5 +224,5 @@ public class Arrendatario extends Ciudadano
         }while(opt != 0 && opt != 3);
 
 
-    }
+    }*/
 }

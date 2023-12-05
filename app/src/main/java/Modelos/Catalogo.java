@@ -1,5 +1,10 @@
 package Modelos;
 
+import android.util.Log;
+import android.widget.Toast;
+
+import com.opar.opar.ArrendatarioActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,9 +24,10 @@ import retrofit2.Response;
 public class Catalogo
 {
     public static Catalogo catalogo = new Catalogo();
-    public  List<Inmueble> inmuebles = new ArrayList<>();
-    List<Inmueble> inmueblesFiltrados = new ArrayList<>();
-    boolean filtrado;
+    private static List<Inmueble> inmuebles = new ArrayList<>();
+    private static List<Inmueble> inmueblesFiltrados = new ArrayList<>();
+    private static boolean filtrado;
+
     /**
      * Constructor para el objeto Catalogo
      * Se inicializa el estado filtrado en false
@@ -29,8 +35,33 @@ public class Catalogo
     public Catalogo()
     {
         this.filtrado = false;
-        this.inmueblesFiltrados = this.ObtenerInmuebles();
     }
+
+    public static List<Inmueble> getInmuebles() {
+        return inmuebles;
+    }
+
+    public static void setInmuebles(List<Inmueble> inmuebles) {
+        Catalogo.inmuebles = inmuebles;
+    }
+
+    public static List<Inmueble> getInmueblesFiltrados() {
+        return inmueblesFiltrados;
+    }
+
+    public static void setInmueblesFiltrados(List<Inmueble> inmueblesFiltrados) {
+        Catalogo.inmueblesFiltrados = inmueblesFiltrados;
+    }
+
+    public static boolean isFiltrado() {
+        return filtrado;
+    }
+
+    public static void setFiltrado(boolean filtrado) {
+        Catalogo.filtrado = filtrado;
+    }
+
+
 
     /**
      * Guarda el inmueble en la lista global de inmuebles
@@ -48,10 +79,10 @@ public class Catalogo
      * Elimina el inmueble de la lista global de inmuebles
      * @param IdInmueble El identificador del inmueble que se va eliminar de la lista
      */
-    public void eliminarInmueble(String IdInmueble)
+    public void eliminarInmueble(Integer IdInmueble)
     {
         for(int i=0;i<this.inmuebles.size(); i++){
-            if(this.inmuebles.get(i).GetIdInmueble().equals( IdInmueble)){
+            if(this.inmuebles.get(i).getIdInmueble().equals( IdInmueble)){
                 this.inmuebles.remove(i);
             }
             System.out.println("Inmueble " + IdInmueble + " eliminado");
@@ -66,9 +97,7 @@ public class Catalogo
         if(filtrado){
             return this.inmueblesFiltrados;
         }else{
-
-
-            return Catalogo.catalogo.inmuebles;
+            return this.inmuebles;
         }
     }
 
@@ -76,11 +105,11 @@ public class Catalogo
      * Devuelve la lista de inmuebles por un identificador especifico
      * @return Imnueble que le corresponde el identificador
      */
-    public Inmueble obtenerInmueblePorId(String IdInmueble)
+    public Inmueble obtenerInmueblePorId(Integer IdInmueble)
     {
         int i;
         for(i=0;i<this.inmuebles.size(); i++){
-            if(this.inmuebles.get(i).GetIdInmueble().equals(IdInmueble)){
+            if(this.inmuebles.get(i).getIdInmueble().equals(IdInmueble)){
                 break;
             }
         }
@@ -99,30 +128,10 @@ public class Catalogo
         List<Inmueble> auxInmuebles = new ArrayList<>();
 
         if(filtro.containsKey("Precio")){
-            boolean menorMayor = false;
-            float precio = 0;
-            List<Object> values = (ArrayList<Object>) filtro.get("Precio");
-            for(Object value : values){
-                if (value instanceof Boolean) {
-                    menorMayor = (boolean) value;
-                }
-
-                if (value instanceof Float) {
-                    precio = (float) value;
-                }
-            }
-
-            if(menorMayor){
-                for(Inmueble inmueble : this.inmueblesFiltrados){
-                    if(inmueble.GetPrecio() >= precio){
-                        auxInmuebles.add(inmueble);
-                    }
-                }
-            }else{
-                for(Inmueble inmueble : this.inmueblesFiltrados){
-                    if(inmueble.GetPrecio() <= precio){
-                        auxInmuebles.add(inmueble);
-                    }
+            float precio = (float) filtro.get("Precio");
+            for(Inmueble inmueble : this.inmueblesFiltrados){
+                if(inmueble.getPrecio() <= precio){
+                    auxInmuebles.add(inmueble);
                 }
             }
 
@@ -132,8 +141,8 @@ public class Catalogo
 
         if(filtro.containsKey("Barrio")){
             String barrio =  (String) filtro.get("Barrio");
-            for(Inmueble inmueble : this.ObtenerInmuebles()){
-                if(inmueble.GetBarrio().equals(barrio)){
+            for(Inmueble inmueble : this.inmuebles){
+                if(inmueble.getIdBarrio().getBarrio().equals(barrio)){
                     auxInmuebles.add(inmueble);
                 }
             }
@@ -143,8 +152,8 @@ public class Catalogo
 
         if(filtro.containsKey("Habitaciones")){
             int habitaciones = (int) filtro.get("Habitaciones");
-            for(Inmueble inmueble : this.ObtenerInmuebles()){
-                if(inmueble.GetCantidadHabitaciones() == habitaciones){
+            for(Inmueble inmueble : this.inmuebles){
+                if(inmueble.getCantidadHabitaciones() == habitaciones){
                     auxInmuebles.add(inmueble);
                 }
             }
@@ -154,9 +163,9 @@ public class Catalogo
 
 
         if(filtro.containsKey("Servicios")){
-            boolean servicios = (boolean) filtro.get("Servicios");
-            for(Inmueble inmueble : this.ObtenerInmuebles()){
-                if(inmueble.GetServiciosPublicos() == servicios){
+            Integer servicios = (Integer) filtro.get("Servicios");
+            for(Inmueble inmueble : this.inmuebles){
+                if(inmueble.getServiciosPublicos() == servicios){
                     auxInmuebles.add(inmueble);
                 }
             }
@@ -165,30 +174,10 @@ public class Catalogo
         }
 
         if(filtro.containsKey("Area")){
-            boolean menorMayor = false;
-            float area = 0;
-            ArrayList<Object> values = (ArrayList<Object>) filtro.get("Area");
-            for(Object value : values){
-                if (value instanceof Boolean) {
-                    menorMayor = (boolean) value;
-                }
-
-                if (value instanceof Float) {
-                    area = (float) value;
-                }
-            }
-
-            if(menorMayor){
-                for(Inmueble inmueble : this.inmueblesFiltrados){
-                    if(inmueble.GetArea() >= area){
-                        auxInmuebles.add(inmueble);
-                    }
-                }
-            }else{
-                for(Inmueble inmueble : this.inmueblesFiltrados){
-                    if(inmueble.GetArea() <= area){
-                        auxInmuebles.add(inmueble);
-                    }
+            float area = (float) filtro.get("Area");
+            for(Inmueble inmueble : this.inmueblesFiltrados){
+                if(inmueble.getArea() <= area){
+                    auxInmuebles.add(inmueble);
                 }
             }
 
@@ -197,30 +186,11 @@ public class Catalogo
         }
 
         if(filtro.containsKey("Calificacion")){
-            boolean menorMayor = false;
-            float calificacion = 0;
-            ArrayList<Object> values = (ArrayList<Object>) filtro.get("Calificacion");
-            for(Object value : values){
-                if (value instanceof Boolean) {
-                    menorMayor = (boolean) value;
-                }
+            float calificacion = (float) filtro.get("Calificacion");
 
-                if (value instanceof Float) {
-                    calificacion = (float) value;
-                }
-            }
-
-            if(menorMayor){
-                for(Inmueble inmueble : this.inmueblesFiltrados){
-                    if(inmueble.GetCalificacionPromedio() >= calificacion){
-                        auxInmuebles.add(inmueble);
-                    }
-                }
-            }else{
-                for(Inmueble inmueble : this.inmueblesFiltrados){
-                    if(inmueble.GetCalificacionPromedio() <= calificacion){
-                        auxInmuebles.add(inmueble);
-                    }
+            for(Inmueble inmueble : this.inmueblesFiltrados) {
+                if (inmueble.getCalificacionPromedio() <= calificacion) {
+                    auxInmuebles.add(inmueble);
                 }
             }
 
@@ -230,8 +200,8 @@ public class Catalogo
 
         if(filtro.containsKey("Tipo")){
             String tipo = (String) filtro.get("Tipo");
-            for(Inmueble inmueble : this.ObtenerInmuebles()){
-                if(inmueble.getTipoInmueble().toLowerCase().equals(tipo.toLowerCase())){
+            for(Inmueble inmueble : this.inmuebles){
+                if(inmueble.getIdTipoInmueble().getTipoInmueble().toLowerCase().equals(tipo.toLowerCase())){
                     auxInmuebles.add(inmueble);
                 }
             }

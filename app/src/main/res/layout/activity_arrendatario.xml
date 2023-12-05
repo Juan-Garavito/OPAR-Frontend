@@ -7,104 +7,180 @@
     android:background="#021A26"
     tools:context=".ArrendatarioActivity">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="280dp"
-        android:layout_height="47dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:text="¿Qué Buscas Hoy?"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.095" />
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="315dp"
         android:layout_height="220dp"
+        android:layout_marginBottom="344dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        tools:srcCompat="@mipmap/habitacion_logo_foreground" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#609966"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/graduate"
+        android:text="OPAR"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="66dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar3"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.273"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/logo_blanco" />
+
+    <Button
+        android:id="@+id/idBuscarHoy"
+        android:layout_width="280dp"
+        android:layout_height="47dp"
+        android:backgroundTint="@color/white"
+        android:text="    ¿Qué Buscas Hoy?"
+        android:textColor="#609966"
+        android:textColorHighlight="#609966"
+        android:textColorHint="#609966"
+        android:textColorLink="#609966"
+        android:textSize="16sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.808" />
+
+    <ImageButton
+        android:id="@+id/idApartamento"
+        android:layout_width="115dp"
+        android:layout_height="108dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.913"
+        app:srcCompat="@mipmap/habitacion_logo_foreground" />
+
+    <ImageButton
+        android:id="@+id/idCasa"
+        android:layout_width="115dp"
+        android:layout_height="108dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.243"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.913"
+        app:srcCompat="@mipmap/casa_logo_foreground" />
 
     <ImageButton
         android:id="@+id/idHabitacion"
         android:layout_width="115dp"
         android:layout_height="108dp"
         android:backgroundTint="#DEEAE0"
-        app:srcCompat="@mipmap/apartamento_logo_foreground"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="419dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/idApartaestudio"
+        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.67"
+        app:srcCompat="@mipmap/apartamento_logo_foreground" />
 
     <ImageButton
         android:id="@+id/idApartaestudio"
         android:layout_width="115dp"
         android:layout_height="108dp"
-        app:srcCompat="@mipmap/apartaestudio_logo_foreground"
-        tools:layout_editor_absoluteX="230dp"
-        tools:layout_editor_absoluteY="419dp" />
-
-    <ImageButton
-        android:id="@+id/idCasa"
-        android:layout_width="115dp"
-        android:layout_height="108dp"
-        app:srcCompat="@mipmap/casa_logo_foreground"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="578dp" />
-
-    <ImageButton
-        android:id="@+id/idApartamento"
-        android:layout_width="115dp"
-        android:layout_height="108dp"
-        app:srcCompat="@mipmap/apartamento_logo_foreground"
-        tools:layout_editor_absoluteX="230dp"
-        tools:layout_editor_absoluteY="578dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.67"
+        app:srcCompat="@mipmap/apartaestudio_logo_foreground" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Habitacion"
         android:textColor="@color/white"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="65dp"
-        tools:layout_editor_absoluteY="535dp" />
+        app:layout_constraintEnd_toStartOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idHabitacion" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@mipmap/buscar_logo"
+        app:layout_constraintEnd_toEndOf="@+id/idBuscarHoy"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="@+id/idBuscarHoy"
+        tools:layout_editor_absoluteY="109dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
         android:text="Casa"
         android:textColor="@color/white"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="87dp"
-        tools:layout_editor_absoluteY="693dp" />
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idCasa" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="80dp"
         android:text="Apartamento"
         android:textColor="@color/white"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="238dp"
-        tools:layout_editor_absoluteY="693dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idApartamento" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="76dp"
         android:fontFamily="sans-serif"
         android:text="ApartaEstudio"
         android:textColor="@color/white"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="238dp"
-        tools:layout_editor_absoluteY="535dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idApartaestudio" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

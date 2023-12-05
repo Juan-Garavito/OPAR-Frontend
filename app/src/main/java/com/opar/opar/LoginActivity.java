@@ -15,7 +15,7 @@ import Modelos.Ciudadano;
 import Modelos.LoginCiudadano;
 import Peticiones.ApiCiudadano;
 import Peticiones.ApiCliente;
-import ViewModel.CiudadanoViewModel;
+import Storage.CiudadanoStorage;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,8 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onResponse(Call<Ciudadano> call, Response<Ciudadano> response) {
                         if(response.body() != null){
                             Ciudadano ciudadano = response.body();
-                            CiudadanoViewModel ciudadanoViewModel = new ViewModelProvider(LoginActivity.this).get(CiudadanoViewModel.class);
-                            ciudadanoViewModel.setCiudadano(ciudadano);
+                            CiudadanoStorage.saveCiudadano(getApplicationContext(), ciudadano);
                             Intent intent = new Intent(LoginActivity.this, RolActivity.class);
                             startActivity(intent);
                             Toast.makeText(LoginActivity.this, "Bienvenido",Toast.LENGTH_LONG).show();

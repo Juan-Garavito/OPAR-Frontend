@@ -10,7 +10,7 @@ public class OpinionInmueble
 {
 
     private int IdOpinion;
-    private String IdInmueble;
+    private Integer IdInmueble;
     private int IdUsuario;
     private String Comentario;
     private float Calificacion;
@@ -23,7 +23,7 @@ public class OpinionInmueble
      * @param Comentario El comentario de la opinion
      * @param Calificacion La calificacion de la opinion
      */
-    public OpinionInmueble(int IdOpinion, String IdInmueble, int IdUsuario,
+    public OpinionInmueble(int IdOpinion, Integer IdInmueble, int IdUsuario,
                            String Comentario, float Calificacion)
     {
         this.IdOpinion = IdOpinion;
@@ -51,7 +51,7 @@ public class OpinionInmueble
     public String GetComentario(){
         return this.Comentario;
     }
-    public String GetIdInmueble(){
+    public Integer GetIdInmueble(){
         return this.IdInmueble;
     }
 
