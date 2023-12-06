@@ -7,10 +7,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.opar.opar.R;
-
 import Modelos.Inmueble;
+
 import java.util.List;
 
 public class InmuebleAdapterArrendador extends RecyclerView.Adapter<InmuebleAdapterArrendador.InmuebleViewHolder> {
@@ -32,6 +33,9 @@ public class InmuebleAdapterArrendador extends RecyclerView.Adapter<InmuebleAdap
     public void onBindViewHolder(@NonNull InmuebleViewHolder holder, int position) {
         Inmueble inmueble = inmuebles.get(position);
         holder.tvDireccion.setText(inmueble.getDireccion());
+
+        // Configurar el ViewPager2
+        holder.viewPager.setAdapter(new ImagenAdapter(inmueble.getImagenes()));
     }
 
     @Override
@@ -41,11 +45,14 @@ public class InmuebleAdapterArrendador extends RecyclerView.Adapter<InmuebleAdap
 
     static class InmuebleViewHolder extends RecyclerView.ViewHolder {
 
+        ViewPager2 viewPager;
         TextView tvDireccion;
 
         public InmuebleViewHolder(@NonNull View itemView) {
             super(itemView);
+            viewPager = itemView.findViewById(R.id.viewPager);
             tvDireccion = itemView.findViewById(R.id.tvDireccion);
         }
     }
 }
+

@@ -18,19 +18,26 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 
+import Modelos.Ciudadano;
 import Modelos.Inmueble;
 import Adapter.InmuebleAdapterArrendador;
+import Storage.CiudadanoStorage;
 
 public class ArrendadorActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_arrendador);
 
+        Ciudadano ciudadano = CiudadanoStorage.getCiudadano(getApplicationContext());
+        String numeroDoc = ciudadano.getNumeroDocumento();
+
         // Crear una cola de solicitudes
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.38:2020/api/inmuebles/arrendador/1002434323";
+        String url = "http://192.168.1.38:2020/api/inmuebles/arrendador/"+numeroDoc;
 
         // Solicitar un string de respuesta desde la URL proporcionada.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,

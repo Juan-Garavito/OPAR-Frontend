@@ -1,5 +1,9 @@
 package Modelos;
 
+import java.util.List;
+
+import Modelos.Imagen;
+
 public class Inmueble {
 
 
@@ -15,8 +19,9 @@ public class Inmueble {
     private float precio;
 
     private float CalificacionPromedio = 0f;
+    private List<Imagen> imagenes;
 
-    public Inmueble(Integer idInmueble, Tipo_InmuebleDTO idTipoInmueble, BarrioDTO idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, Integer precio) {
+    public Inmueble(Integer idInmueble, Tipo_InmuebleDTO idTipoInmueble, BarrioDTO idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, Integer precio, List<Imagen> imagenes) {
         this.idInmueble = idInmueble;
         this.idTipoInmueble = idTipoInmueble;
         this.idBarrio = idBarrio;
@@ -27,6 +32,7 @@ public class Inmueble {
         this.descripcion = descripcion;
         this.direccion = direccion;
         this.precio = precio;
+        this.imagenes = imagenes;
     }
 
     public float getPrecio() {
@@ -117,6 +123,14 @@ public class Inmueble {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public List<Imagen> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<Imagen> imagenes) {
+        this.imagenes = imagenes;
     }
 
     @Override
