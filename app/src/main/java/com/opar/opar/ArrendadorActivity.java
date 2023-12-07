@@ -40,7 +40,7 @@ public class ArrendadorActivity extends AppCompatActivity {
 
         // Crear una cola de solicitudes
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://10.14.56.103:2020/api/inmuebles/arrendador/"+numeroDoc;
+        String url = "http://192.168.1.38:2020/api/inmuebles/arrendador/"+numeroDoc;
 
         // Solicitar un string de respuesta desde la URL proporcionada.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
