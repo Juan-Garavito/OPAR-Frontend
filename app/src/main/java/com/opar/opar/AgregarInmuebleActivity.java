@@ -2,10 +2,12 @@ package com.opar.opar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -33,7 +35,7 @@ public class AgregarInmuebleActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://192.168.1.38:2020/api/barrios/list")
+                .url("https://opar-backend-production.up.railway.app/api/barrios/list")
                 .build();
 
         client.newCall(request).enqueue(new Callback() {
@@ -76,6 +78,16 @@ public class AgregarInmuebleActivity extends AppCompatActivity {
                         }
                     });
                 }
+            }
+        });
+
+        Button agregarImagenes = findViewById(R.id.btnAgImg);
+
+        agregarImagenes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AgregarInmuebleActivity.this, AgregarImagenesActivity.class);
+                startActivity(intent);
             }
         });
     }
