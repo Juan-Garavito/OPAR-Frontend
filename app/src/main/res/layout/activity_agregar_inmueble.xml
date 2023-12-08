@@ -39,13 +39,13 @@
             android:id="@+id/textView21"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="28dp"
             android:text="Cantidad de habitaciones:"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox5" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
         <TextView
             android:id="@+id/textView20"
@@ -59,42 +59,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
-        <CheckBox
-            android:id="@+id/checkBox6"
-            android:layout_width="60dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="12dp"
-            android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-            android:drawablePadding="0dp"
-            android:drawableTint="#609966"
-            android:text="No"
-            android:textSize="16dp"
-            app:layout_constraintStart_toEndOf="@+id/checkBox5"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-        <CheckBox
-            android:id="@+id/checkBox5"
-            android:layout_width="50dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="12dp"
-            android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-            android:drawablePadding="0dp"
-            android:drawableTint="#609966"
-            android:text="Si"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
         <TextView
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="28dp"
             android:text="Tiene servicios públicos:"
             android:textSize="18dp"
             android:textStyle="bold"
@@ -106,57 +76,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
             android:text="Barrio:"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
 
-        <CheckBox
-            android:id="@+id/checkBox4"
-            android:layout_width="149dp"
-            android:layout_height="26dp"
-            android:layout_marginStart="40dp"
+        <RadioGroup
+            android:id="@+id/radioGroupTipoInmueble"
+            android:layout_width="331dp"
+            android:layout_height="145dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
-            android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-            android:drawablePadding="77dp"
-            android:drawableTint="#609966"
-            android:text="Casa"
-            android:textSize="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView18">
 
-        <CheckBox
-            android:id="@+id/checkBox3"
-            android:layout_width="148dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-            android:drawablePadding="17dp"
-            android:drawableTint="#609966"
-            android:text="Apartamento"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+            <RadioButton
+                android:id="@+id/radioButtonApartaestudio"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Apartaestudio"
+                android:textColorHighlight="#609966" />
 
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="148dp"
-            android:layout_height="27dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-            android:drawablePadding="33dp"
-            android:drawableTint="#609966"
-            android:text="Habitación"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox3" />
+            <RadioButton
+                android:id="@+id/radioButtonApartamento"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Apartamento" />
+
+            <RadioButton
+                android:id="@+id/radioButtonHabitacion"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Habitación" />
+
+            <RadioButton
+                android:id="@+id/radioButtonCasa"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:text="Casa" />
+
+        </RadioGroup>
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar8"
@@ -197,10 +158,11 @@
             android:id="@+id/textView16"
             android:layout_width="363dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="Para agregar el inmueble, necesitaremos la siguiente información:"
             android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.326"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar8" />
 
@@ -208,28 +170,13 @@
             android:id="@+id/textView18"
             android:layout_width="164dp"
             android:layout_height="22dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="20dp"
             android:text="Tipo de inmueble:"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="148dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="12dp"
-            android:button="@null"
-            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"
-            android:drawablePadding="10dp"
-            android:drawableTint="#609966"
-            android:text="Apartaestudio"
-            android:textSize="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <Button
             android:id="@+id/btnAgImg"
@@ -256,31 +203,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:text="Dirección:"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox4" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroupTipoInmueble" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"
             android:layout_width="348dp"
             android:layout_height="42dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:hint="Por ejemplo: Cr 24 #8-89"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.634"
+            app:layout_constraintHorizontal_bias="0.609"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="346dp"
-            android:layout_height="27dp"
-            android:layout_marginTop="16dp"
+            android:layout_width="228dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#609966"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.615"
+            app:layout_constraintHorizontal_bias="0.152"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
@@ -288,13 +236,14 @@
             android:id="@+id/editTextNumber"
             android:layout_width="42dp"
             android:layout_height="47dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
             android:ems="10"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox6" />
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
         <EditText
             android:id="@+id/editTextNumberDecimal"
@@ -312,7 +261,7 @@
             android:id="@+id/editTextTextMultiLine"
             android:layout_width="335dp"
             android:layout_height="155dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:background="#ddffbb"
             android:ems="10"
             android:gravity="start|top"
@@ -326,7 +275,7 @@
             android:paddingBottom="3dp"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintHorizontal_bias="0.467"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -341,6 +290,28 @@
             android:inputType="numberDecimal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="75dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19">
+
+            <RadioButton
+                android:id="@+id/radioButton6"
+                android:layout_width="wrap_content"
+                android:layout_height="27dp"
+                android:text="Si" />
+
+            <RadioButton
+                android:id="@+id/radioButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="No" />
+        </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
