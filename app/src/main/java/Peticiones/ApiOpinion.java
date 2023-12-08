@@ -11,5 +11,5 @@ import retrofit2.http.POST;
 public interface ApiOpinion {
 
     @POST("api/opiniones/inmuebles")
-    Call<List<Opinion>> BuscarPorInmueble(@Body Inmueble inmueble);
+    Call<List<Opinion>> BuscarPorInmueble(@Body Integer inmueble);
 }

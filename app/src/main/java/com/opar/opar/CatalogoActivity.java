@@ -68,7 +68,7 @@ public class CatalogoActivity extends AppCompatActivity implements OnItemClickLi
                     initRecyclerView(inmuebles);
                     if(inmuebles != null){
                         for (Inmueble inmueble : inmuebles){
-                            Log.e("Inmueble", inmueble.getIdTipoInmueble().toString());
+                            Log.e("Inmueble", inmueble.getImagenes().toString());
                         }
                     }else{
                         Log.e("Inmueble", "Problemas");

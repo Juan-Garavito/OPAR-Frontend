@@ -23,10 +23,10 @@ public class InmuebleViewHolder extends ViewHolder {
     private TextView direccion = itemView.findViewById(R.id.direccionInmueble);
 
     public void Render(Inmueble inmueble){
-
         direccion.setText(inmueble.getDireccion());
-        Log.e("Imagen", String.valueOf(inmueble.getImagenes().get(0).getUrl()));
-        Glide.with(direccion.getContext()).load(inmueble.getImagenes().get(0).getUrl()).into(vista);
-
+        if(!inmueble.getImagenes().isEmpty()){
+            Log.e("Imagen", String.valueOf(inmueble.getImagenes().get(0).getUrl()));
+            Glide.with(direccion.getContext()).load(inmueble.getImagenes().get(0).getUrl()).into(vista);
+        };
     }
 }

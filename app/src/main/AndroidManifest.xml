@@ -19,6 +19,12 @@
             android:name=".VisorActivity"
             android:exported="false" />
         <activity
+            android:name=".AgregarImagenesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AgregarInmuebleActivity"
+            android:exported="false" />
+        <activity
             android:name=".BuscarActivity"
             android:exported="false" />
         <activity

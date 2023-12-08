@@ -76,7 +76,7 @@ public class VisorActivity extends AppCompatActivity {
         Button llamar = findViewById(R.id.idBtnLlamar);
 
 
-        Call<List<Opinion>> call = ApiCliente.GetCliente().create(ApiOpinion.class).BuscarPorInmueble(inmueble);
+        Call<List<Opinion>> call = ApiCliente.GetCliente().create(ApiOpinion.class).BuscarPorInmueble(inmueble.getIdInmueble());
 
         call.enqueue(new Callback<List<Opinion>>() {
             @Override
