@@ -8,6 +8,20 @@
     tools:context=".CatalogoActivity"
     android:id="@+id/frameLayout">
 
+    <TextView
+        android:id="@+id/idTituloCatalogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/graduate"
+        android:text="CATALOGO"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar7" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar7"
         android:layout_width="match_parent"
@@ -48,10 +62,12 @@
         android:id="@+id/recyclerCatalogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar7"
+        app:layout_constraintTop_toBottomOf="@+id/idTituloCatalogo"
         tools:layout_conversion_absoluteHeight="147dp"
         tools:layout_conversion_absoluteWidth="411dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

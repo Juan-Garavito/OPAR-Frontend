@@ -5,10 +5,15 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,13 +34,18 @@ public class CatalogoActivity extends AppCompatActivity implements OnItemClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_catalogo);
 
+        TextView textView =  findViewById(R.id.idTituloCatalogo);
+        SpannableString mitextoU = new SpannableString("CATALOGO");
+        mitextoU.setSpan(new UnderlineSpan(), 0, mitextoU.length(), 0);
+        textView.setText(mitextoU);
+
         HashMap<String, Object>  filtros;
         if(getIntent().getExtras() == null){
             Log.e("filtro", "getIntent().getExtras() == null");
             filtros = null;
         }else{
-            Bundle inmueblesEnviados = getIntent().getExtras();
-            filtros = (HashMap<String, Object>) inmueblesEnviados.getSerializable("filtros");
+            Bundle filtrosEnviados = getIntent().getExtras();
+            filtros = (HashMap<String, Object>) filtrosEnviados.getSerializable("filtros");
         }
 
 
@@ -46,6 +56,7 @@ public class CatalogoActivity extends AppCompatActivity implements OnItemClickLi
             public void onResponse(Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
                 if(response.body() != null){
                     Catalogo.setInmuebles(response.body());
+                    Catalogo.setInmueblesFiltrados(response.body());
                     List<Inmueble>  inmuebles = null;
                     if(filtros == null){
                          Log.e("filtro","no hay filtro");
@@ -82,6 +93,11 @@ public class CatalogoActivity extends AppCompatActivity implements OnItemClickLi
 
     @Override
     public void onItemClick(Inmueble inmueble) {
-        Toast.makeText(this, inmueble.toString(),Toast.LENGTH_LONG).show();
+        Log.e("Seleccionado", inmueble.toString());
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("inmueble", inmueble);
+        Intent intent = new Intent(CatalogoActivity.this, VisorActivity.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }

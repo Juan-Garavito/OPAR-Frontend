@@ -1,6 +1,8 @@
 package Modelos;
 
-public class Tipo_InmuebleDTO {
+import java.io.Serializable;
+
+public class Tipo_InmuebleDTO implements Serializable {
 
     private Integer idTipoInmueble;
     private String tipoInmueble;

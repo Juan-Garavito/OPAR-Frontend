@@ -1,10 +1,11 @@
 package Modelos;
 
+import java.io.Serializable;
 import java.util.List;
 
 import Modelos.Imagen;
 
-public class Inmueble {
+public class Inmueble  implements Serializable {
 
 
     private Integer idInmueble;
@@ -20,6 +21,7 @@ public class Inmueble {
 
     private float CalificacionPromedio = 0f;
     private List<Imagen> imagenes;
+
 
     public Inmueble(Integer idInmueble, Tipo_InmuebleDTO idTipoInmueble, BarrioDTO idBarrio, Ciudadano numeroDocumento, Integer cantidadHabitaciones, Integer serviciosPublicos, float area, String descripcion, String direccion, Integer precio, List<Imagen> imagenes) {
         this.idInmueble = idInmueble;
@@ -132,6 +134,7 @@ public class Inmueble {
     public void setImagenes(List<Imagen> imagenes) {
         this.imagenes = imagenes;
     }
+
 
     @Override
     public String toString() {

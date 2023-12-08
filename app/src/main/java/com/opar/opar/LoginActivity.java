@@ -2,9 +2,12 @@ package com.opar.opar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,20 +23,37 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity{
+
+    CheckBox mostrarContraseña = null;
+    EditText textUsuario = null;
+    EditText textContraseña = null;
+    Button btnIngresar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnIngresar = findViewById(R.id.idIngresar);
+        mostrarContraseña = findViewById(R.id.idMostrar);
+        textUsuario = findViewById(R.id.idUsuario);
+        textContraseña = findViewById(R.id.idContraseña);
+        btnIngresar = findViewById(R.id.idIngresar);
+
+       mostrarContraseña.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+           @Override
+           public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+               if(isChecked){
+                   textContraseña.setInputType(InputType.TYPE_CLASS_TEXT);
+               }else{
+                   textContraseña.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+               }
+           }
+       });
+
+
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
-
-            EditText textUsuario = findViewById(R.id.idUsuario);
-            EditText textContraseña = findViewById(R.id.idContraseña);
-
             @Override
             public void onClick(View view) {
                 String usuario = textUsuario.getText().toString().trim();

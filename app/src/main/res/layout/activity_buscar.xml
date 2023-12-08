@@ -43,38 +43,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_blanco" />
 
-    <androidx.gridlayout.widget.GridLayout
-        android:id="@+id/idVerCatalogo"
-        android:layout_width="289dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idFiltrar">
-
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:layout_column="1"
-            app:layout_row="0"
-            app:srcCompat="@mipmap/catalogo_logo_foreground" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/graduate"
-            android:text="Ver Catalogo"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_column="2"
-            app:layout_row="0" />
-
-    </androidx.gridlayout.widget.GridLayout>
-
     <TextView
         android:id="@+id/idTituloBuscarHoy"
         android:layout_width="wrap_content"
@@ -89,11 +57,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar5" />
 
-    <androidx.gridlayout.widget.GridLayout
+    <FrameLayout
+        android:id="@+id/idVerCatalogo"
+        android:layout_width="332dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idFiltrar">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="0dp"
+            app:srcCompat="@mipmap/catalogo_logo_foreground" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="312dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/graduate"
+            android:text="Ver Catalogo"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </FrameLayout>
+
+    <FrameLayout
         android:id="@+id/idFiltrar"
-        android:layout_width="289dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="72dp"
+        android:layout_width="332dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idTituloBuscarHoy">
@@ -102,22 +98,18 @@
             android:id="@+id/imageButton"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            app:layout_column="1"
-            app:layout_row="0"
+            android:layout_marginLeft="0dp"
             app:srcCompat="@mipmap/filtro_logo_foreground" />
 
         <TextView
             android:id="@+id/textView8"
-            android:layout_width="match_parent"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/graduate"
             android:text="Filtrar"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            app:layout_column="2"
-            app:layout_row="0" />
-
-    </androidx.gridlayout.widget.GridLayout>
+            android:textSize="20dp" />
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

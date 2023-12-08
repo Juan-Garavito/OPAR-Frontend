@@ -94,11 +94,11 @@ public class Catalogo
      * @return Lista de inmuebles
      */
     public List<Inmueble> ObtenerInmuebles(){
-        if(filtrado){
-            return this.inmueblesFiltrados;
-        }else{
+        //if(filtrado){
+            //return this.inmueblesFiltrados;
+        //}else{
             return this.inmuebles;
-        }
+        //}
     }
 
     /**
@@ -141,8 +141,8 @@ public class Catalogo
 
         if(filtro.containsKey("Barrio")){
             String barrio =  (String) filtro.get("Barrio");
-            for(Inmueble inmueble : this.inmuebles){
-                if(inmueble.getIdBarrio().getBarrio().equals(barrio)){
+            for(Inmueble inmueble : this.inmueblesFiltrados){
+                if(inmueble.getIdBarrio().getBarrio().toLowerCase().equals(barrio.toLowerCase())){
                     auxInmuebles.add(inmueble);
                 }
             }
@@ -152,7 +152,7 @@ public class Catalogo
 
         if(filtro.containsKey("Habitaciones")){
             int habitaciones = (int) filtro.get("Habitaciones");
-            for(Inmueble inmueble : this.inmuebles){
+            for(Inmueble inmueble : this.inmueblesFiltrados){
                 if(inmueble.getCantidadHabitaciones() == habitaciones){
                     auxInmuebles.add(inmueble);
                 }
@@ -164,7 +164,7 @@ public class Catalogo
 
         if(filtro.containsKey("Servicios")){
             Integer servicios = (Integer) filtro.get("Servicios");
-            for(Inmueble inmueble : this.inmuebles){
+            for(Inmueble inmueble : this.inmueblesFiltrados){
                 if(inmueble.getServiciosPublicos() == servicios){
                     auxInmuebles.add(inmueble);
                 }
@@ -200,7 +200,7 @@ public class Catalogo
 
         if(filtro.containsKey("Tipo")){
             String tipo = (String) filtro.get("Tipo");
-            for(Inmueble inmueble : this.inmuebles){
+            for(Inmueble inmueble : this.inmueblesFiltrados){
                 if(inmueble.getIdTipoInmueble().getTipoInmueble().toLowerCase().equals(tipo.toLowerCase())){
                     auxInmuebles.add(inmueble);
                 }

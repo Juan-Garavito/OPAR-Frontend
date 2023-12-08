@@ -25,7 +25,7 @@ public class InmuebleAdapterArrendador extends RecyclerView.Adapter<InmuebleAdap
     @NonNull
     @Override
     public InmuebleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item2, parent, false);
         return new InmuebleViewHolder(view);
     }
 
@@ -50,7 +50,7 @@ public class InmuebleAdapterArrendador extends RecyclerView.Adapter<InmuebleAdap
 
         public InmuebleViewHolder(@NonNull View itemView) {
             super(itemView);
-            viewPager = itemView.findViewById(R.id.viewPager);
+            viewPager = itemView.findViewById(R.id.viewPager2);
             tvDireccion = itemView.findViewById(R.id.tvDireccion);
         }
     }

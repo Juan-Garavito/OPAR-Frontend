@@ -1,6 +1,8 @@
 package Modelos;
 
-public class BarrioDTO {
+import java.io.Serializable;
+
+public class BarrioDTO implements Serializable {
 
     private Integer idBarrio;
 
