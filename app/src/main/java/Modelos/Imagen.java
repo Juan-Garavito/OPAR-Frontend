@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Imagen  implements Serializable {
     private Integer idImagen;
-    private Inmueble inmueble;
+    private Inmueble idInmueble;
     private String url;
 
-    public Imagen(Inmueble inmueble, String url) {
-        this.inmueble = inmueble;
+    public Imagen(Inmueble idInmueble, String url) {
+        this.idInmueble = idInmueble;
         this.url = url;
     }
 
@@ -21,11 +21,11 @@ public class Imagen  implements Serializable {
     }
 
     public Inmueble getInmueble() {
-        return inmueble;
+        return idInmueble;
     }
 
-    public void setInmueble(Inmueble inmueble) {
-        this.inmueble = inmueble;
+    public void setInmueble(Inmueble idInmueble) {
+        this.idInmueble = idInmueble;
     }
 
     public String getUrl() {
