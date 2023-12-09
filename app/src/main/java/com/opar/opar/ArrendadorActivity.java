@@ -1,8 +1,13 @@
 package com.opar.opar;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -60,6 +65,16 @@ public class ArrendadorActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 // Aquí manejas el error
                 Log.d("Arrendador-backend", "Error: " + error.toString());
+            }
+        });
+
+        Button agregarInmueble = findViewById(R.id.agInmueble);
+
+        agregarInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ArrendadorActivity.this, AgregarInmuebleActivity.class);
+                startActivity(intent);
             }
         });
 

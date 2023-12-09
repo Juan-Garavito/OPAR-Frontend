@@ -105,7 +105,7 @@ public class AgregarInmuebleActivity extends AppCompatActivity {
                 mapTipoInmueble.put("Casa", 1);
                 mapTipoInmueble.put("Apartamento", 2);
                 mapTipoInmueble.put("ApartaEstudio", 3);
-                mapTipoInmueble.put("Habitacion", 4);
+                mapTipoInmueble.put("Habitación", 4);
 
                 RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupTipoInmueble);
                 int selectedId = radioGroup.getCheckedRadioButtonId();
