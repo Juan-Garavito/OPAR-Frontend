@@ -19,6 +19,9 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -94,8 +97,6 @@ public class AgregarInmuebleActivity extends AppCompatActivity {
         agregarImagenes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AgregarInmuebleActivity.this, AgregarImagenesActivity.class);
-                startActivity(intent);
 
                 //Obtenemos lo parametros para luego crear un json
 
@@ -104,7 +105,7 @@ public class AgregarInmuebleActivity extends AppCompatActivity {
                 mapTipoInmueble.put("Casa", 1);
                 mapTipoInmueble.put("Apartamento", 2);
                 mapTipoInmueble.put("ApartaEstudio", 3);
-                mapTipoInmueble.put("Habitacion", 4);
+                mapTipoInmueble.put("Habitación", 4);
 
                 RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupTipoInmueble);
                 int selectedId = radioGroup.getCheckedRadioButtonId();
@@ -130,7 +131,7 @@ public class AgregarInmuebleActivity extends AppCompatActivity {
                 int selectedId2 = radioGroup2.getCheckedRadioButtonId();
                 RadioButton radioButton2 = (RadioButton) findViewById(selectedId2);
                 String servicios = radioButton2.getText().toString();
-                Integer opcion = mapServiciosPublicos.get(servicios);
+                Integer tieneServiciosPublicos = mapServiciosPublicos.get(servicios);
 
                 //Cantidad de habitaciones
                 EditText editTextCH = (EditText) findViewById(R.id.editTextNumber);
@@ -153,8 +154,59 @@ public class AgregarInmuebleActivity extends AppCompatActivity {
 
                 //Documento del arrendador
                 Ciudadano ciudadano = CiudadanoStorage.getCiudadano(getApplicationContext());
-                String numeroDoc = ciudadano.getNumeroDocumento();
+                String numeroDocumento = ciudadano.getNumeroDocumento();
 
+                // Creamos el json con los datos
+                JSONObject json = new JSONObject();
+                try {
+                    json.put("idTipoInmueble", idTipoInmueble);
+                    json.put("idBarrio", idBarrio);
+                    json.put("numeroDocumento", numeroDocumento);
+                    json.put("cantidadHabitaciones", cantidadHabitaciones);
+                    json.put("serviciosPublicos", tieneServiciosPublicos);
+                    json.put("area", area);
+                    json.put("descripcion", descripcion);
+                    json.put("direccion", direccion);
+                    json.put("precio", precio);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                // Enviamos la solicitud POST
+                RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString());
+
+                Request request = new Request.Builder()
+                        .url("https://opar-backend-production.up.railway.app/api/inmuebles/agregar")
+                        .post(body)
+                        .build();
+
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        if (response.isSuccessful()) {
+                            String jsonData = response.body().string();
+                            try {
+                                JSONObject Jobject = new JSONObject(jsonData);
+                                String idInmueble = Jobject.getString("idInmueble"); // Aquí es donde se obtiene el idInmueble
+
+                                // Ahora puedes pasar este ID a la siguiente actividad
+                                Intent intent = new Intent(AgregarInmuebleActivity.this, AgregarImagenesActivity.class);
+                                intent.putExtra("ID_INMUEBLE", idInmueble);
+                                startActivity(intent);
+                                Log.d("pruba-envio-id", idInmueble);
+                            } catch (JSONException e) {
+                                Log.e("JSON Error", "Error al obtener la clave 'idInmueble': " + e.getMessage());
+                            }
+                        } else {
+                            // Hubo un error.
+                        }
+                    }
+                });
             }
         });
     }

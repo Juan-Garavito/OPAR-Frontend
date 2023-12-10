@@ -1,8 +1,13 @@
 package com.opar.opar;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,7 +42,7 @@ public class ArrendadorActivity extends AppCompatActivity {
 
         // Crear una cola de solicitudes
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url = "http://192.168.1.9/api/inmuebles/arrendador/"+numeroDoc;
+        String url = "https://opar-backend-production.up.railway.app/api/inmuebles/arrendador/"+numeroDoc;
 
         // Solicitar un string de respuesta desde la URL proporcionada.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -60,6 +65,16 @@ public class ArrendadorActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 // Aquí manejas el error
                 Log.d("Arrendador-backend", "Error: " + error.toString());
+            }
+        });
+
+        Button agregarInmueble = findViewById(R.id.agInmueble);
+
+        agregarInmueble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ArrendadorActivity.this, AgregarInmuebleActivity.class);
+                startActivity(intent);
             }
         });
 
