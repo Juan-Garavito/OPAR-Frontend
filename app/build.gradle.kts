@@ -49,4 +49,5 @@ dependencies {
     annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
     implementation ("androidx.gridlayout:gridlayout:1.0.0")
     implementation ("androidx.viewpager2:viewpager2:1.1.0-alpha01")
+    implementation("com.cloudinary:cloudinary-android:2.3.1")
 }

@@ -10,18 +10,18 @@ public class Opinion
 {
 
     private int idOpinion;
-    private Inmueble idInmueble;
+    private Integer idInmueble;
     private Ciudadano numeroDocumento;
     private String comentario;
     private float calificacion;
 
-    public Opinion(int idOpinion, Inmueble idInmueble, Ciudadano numeroDocumento, String comentario, float calificacion) {
-        this.idOpinion = idOpinion;
+    public Opinion(Integer  idInmueble, Ciudadano numeroDocumento, String comentario, float calificacion) {
         this.idInmueble = idInmueble;
         this.numeroDocumento = numeroDocumento;
         this.comentario = comentario;
         this.calificacion = calificacion;
     }
+
 
     public int getIdOpinion() {
         return idOpinion;
@@ -31,11 +31,11 @@ public class Opinion
         this.idOpinion = idOpinion;
     }
 
-    public Inmueble getIdInmueble() {
+    public Integer getIdInmueble() {
         return idInmueble;
     }
 
-    public void setIdInmueble(Inmueble idInmueble) {
+    public void setIdInmueble(Integer idInmueble) {
         this.idInmueble = idInmueble;
     }
 

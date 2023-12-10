@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class ArrendatarioActivity extends AppCompatActivity {
         ImageButton apartaestudio = findViewById(R.id.idApartaestudio);
         ImageButton habitacion = findViewById(R.id.idHabitacion);
         ImageButton apartamento = findViewById(R.id.idApartamento);
-        Button buscar = findViewById(R.id.idBuscarHoy);
+        LinearLayout buscar = findViewById(R.id.idBuscarHoy);
 
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override

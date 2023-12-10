@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import Modelos.Ciudadano;
 import Modelos.LoginCiudadano;
@@ -29,6 +28,7 @@ public class LoginActivity extends AppCompatActivity{
     EditText textUsuario = null;
     EditText textContraseña = null;
     Button btnIngresar = null;
+    Button btnRegistrar = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity{
         textUsuario = findViewById(R.id.idUsuario);
         textContraseña = findViewById(R.id.idContraseña);
         btnIngresar = findViewById(R.id.idIngresar);
+        btnRegistrar = findViewById(R.id.idRegistrarse);
 
        mostrarContraseña.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
            @Override
@@ -86,6 +87,12 @@ public class LoginActivity extends AppCompatActivity{
             }
         });
 
-
+        btnRegistrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegistrarseActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
