@@ -9,13 +9,30 @@ import android.content.ClipData;
 import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import Dropbox.DropboxUploader;
 
 public class AgregarImagenesActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGES = 1;
+    private List<Uri> imageUris = new ArrayList<>();
+    private String idInmueble;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +40,7 @@ public class AgregarImagenesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_agregar_imagenes);
 
         Intent intent = getIntent();
-        String idInmueble = intent.getStringExtra("ID_INMUEBLE");
+        idInmueble = intent.getStringExtra("ID_INMUEBLE");
 
         //Para acceder a la galeria
 
@@ -38,6 +55,68 @@ public class AgregarImagenesActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGES);
             }
         });
+
+        Button publicarInmueble = findViewById(R.id.btnPublicarInmueble);
+
+        publicarInmueble.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View v) {
+                for (Uri imageUri : imageUris) {
+                    String mimeType = getContentResolver().getType(imageUri);
+                    String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);
+                    String path = "/" + imageUri.getLastPathSegment() + "." + extension;
+                    Log.d("DEBUG2", "Subiendo imagen: " + imageUri.toString() + " a Dropbox: " + path);
+                    new DropboxUploader(AgregarImagenesActivity.this) {
+                        @Override
+                        protected void onPostExecute(String url) {
+                            // Después de subir la imagen a Dropbox, haz la solicitud HTTP POST a tu API
+                            int inmueble = Integer.parseInt(idInmueble);
+                            agregarImagen(url, inmueble);
+
+
+                        }
+                    }.execute(path, imageUri.toString());
+                }
+                Toast.makeText(AgregarImagenesActivity.this, "Inmueble publicado", Toast.LENGTH_SHORT).show();
+
+                // Nos dirgimos  a ArrendadorActivity
+                Intent intent = new Intent(AgregarImagenesActivity.this, RolActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void agregarImagen(String url, int inmueble) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String apiUrl = "https://opar-backend-production.up.railway.app/api/imagenes/agregar";
+
+        JSONObject parameters = new JSONObject();
+        try {
+            parameters.put("url", url);
+            parameters.put("inmueble", inmueble);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.POST, apiUrl, parameters,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        // response
+                        Log.d("Response", response.toString());
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        Log.d("Error.Response", error.toString());
+                    }
+                }
+        );
+        queue.add(jsonRequest);
     }
 
     @Override
@@ -50,19 +129,11 @@ public class AgregarImagenesActivity extends AppCompatActivity {
                     Log.d("DEBUG1", "Número de imágenes seleccionadas: " + mClipData.getItemCount());
                     for (int i = 0; i < mClipData.getItemCount(); i++) {
                         Uri imageUri = mClipData.getItemAt(i).getUri();
-                        String mimeType = getContentResolver().getType(imageUri);
-                        String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);
-                        String path = "/" + imageUri.getLastPathSegment() + "." + extension;
-                        Log.d("DEBUG2", "Subiendo imagen: " + imageUri.toString() + " a Dropbox: " + path);
-                        new DropboxUploader(this).execute(path, imageUri.toString());
+                        imageUris.add(imageUri);
                     }
                 } else if (data.getData() != null) {
                     Uri imageUri = data.getData();
-                    String mimeType = getContentResolver().getType(imageUri);
-                    String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);
-                    String path = "/" + imageUri.getLastPathSegment() + "." + extension;
-                    Log.d("DEBUG3", "Subiendo imagen: " + imageUri.toString() + " a Dropbox: " + path);
-                    new DropboxUploader(this).execute(path, imageUri.toString());
+                    imageUris.add(imageUri);
                 }
             }
         }
