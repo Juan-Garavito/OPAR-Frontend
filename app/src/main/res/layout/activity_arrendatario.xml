@@ -44,11 +44,47 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_blanco" />
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:clipChildren="true"
+        android:clipToPadding="false"
+        android:contextClickable="true"
+        app:layout_constraintBottom_toTopOf="@+id/mostrarImagenes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar4">
+
+        <Button
+            android:id="@+id/idBuscarHoy"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:backgroundTint="@color/white"
+            android:text="    ¿Qué Buscas Hoy?"
+            android:textColor="#609966"
+            android:textColorHighlight="#609966"
+            android:textColorHint="#609966"
+            android:textColorLink="#609966"
+            android:textSize="16sp"
+            app:cornerRadius="0dp" />
+
+        <ImageButton
+            android:id="@+id/imageButton3"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/buscar_logo" />
+    </FrameLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mostrarImagenes"
         android:layout_width="320dp"
         android:layout_height="210dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="44dp"
         android:background="@drawable/border"
         android:paddingLeft="5dp"
         android:paddingTop="10dp"
@@ -56,10 +92,8 @@
         android:paddingBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/gridLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idBuscarHoy"
-        app:layout_constraintVertical_bias="0.089">
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -95,43 +129,12 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:id="@+id/idBuscarHoy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar4">
-
-        <Button
-            android:layout_width="280dp"
-            android:layout_height="47dp"
-            android:backgroundTint="@color/white"
-            android:text="    ¿Qué Buscas Hoy?"
-            android:textColor="#609966"
-            android:textColorHighlight="#609966"
-            android:textColorHint="#609966"
-            android:textColorLink="#609966"
-            android:textSize="16sp"
-            app:cornerRadius="0dp" />
-
-        <ImageButton
-            android:id="@+id/imageButton3"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginLeft="-250dp"
-            android:layout_marginTop="10dp"
-            android:src="@mipmap/buscar_logo" />
-
-    </LinearLayout>
-
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/gridLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
         app:barrierAllowsGoneWidgets="false"
         app:columnCount="2"
         app:columnOrderPreserved="false"
@@ -139,7 +142,6 @@
         app:flow_verticalAlign="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageButton

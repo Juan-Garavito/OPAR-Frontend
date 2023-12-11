@@ -36,4 +36,12 @@ public class Imagen  implements Serializable {
         this.url = url;
     }
 
+    @Override
+    public String toString() {
+        return "Imagen{" +
+                "idImagen=" + idImagen +
+                ", inmueble=" + inmueble +
+                ", url='" + url + '\'' +
+                '}';
+    }
 }

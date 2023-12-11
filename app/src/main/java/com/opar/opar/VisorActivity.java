@@ -25,6 +25,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import Adapter.ImagenAdapter;
+import Adapter.ImagenCatalogoAdapter;
 import Adapter.OpinionAdapter;
 import Modelos.Ciudadano;
 import Modelos.Inmueble;
@@ -380,7 +381,7 @@ public class VisorActivity extends AppCompatActivity {
 
 
         ViewPager2 imagenes = findViewById(R.id.idBuscarInmueble);
-        imagenes.setAdapter(new ImagenAdapter(inmueble.getImagenes()));
+        imagenes.setAdapter(new ImagenCatalogoAdapter(inmueble.getImagenes()));
 
         TextView barrio = findViewById(R.id.idBarrioInmueble);
         barrio.setText(inmueble.getIdBarrio().getBarrio());

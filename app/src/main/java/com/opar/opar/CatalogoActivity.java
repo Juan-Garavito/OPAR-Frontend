@@ -1,5 +1,6 @@
 package com.opar.opar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,6 +51,16 @@ public class CatalogoActivity extends AppCompatActivity implements OnItemClickLi
             filtros = (HashMap<String, Object>) filtrosEnviados.getSerializable("filtros");
         }
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.card_eliminando_opinion, null);
+        builder.setView(view);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        TextView carga = view.findViewById(R.id.idTextCarga);
+        carga.setText("Cargando Inmuebles...");
 
         Call<List<Inmueble>> call = ApiCliente.GetCliente().create(ApiInmueble.class).ObtenerInmuebles();
 
@@ -73,6 +86,7 @@ public class CatalogoActivity extends AppCompatActivity implements OnItemClickLi
                     }else{
                         Log.e("Inmueble", "Problemas");
                     }
+                    dialog.dismiss();
                 }
             }
 

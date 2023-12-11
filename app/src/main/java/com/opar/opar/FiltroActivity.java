@@ -43,6 +43,21 @@ public class FiltroActivity extends AppCompatActivity {
         mitextoU.setSpan(new UnderlineSpan(), 0, mitextoU.length(), 0);
         textView.setText(mitextoU);
 
+        TextView textView2 =  findViewById(R.id.idServiciostext);
+        SpannableString mitextoU2 = new SpannableString("Servicios");
+        mitextoU2.setSpan(new UnderlineSpan(), 0, mitextoU2.length(), 0);
+        textView2.setText(mitextoU2);
+
+        TextView textView3 =  findViewById(R.id.idBarriotext);
+        SpannableString mitextoU3 = new SpannableString("Barrio");
+        mitextoU3.setSpan(new UnderlineSpan(), 0, mitextoU3.length(), 0);
+        textView3.setText(mitextoU3);
+
+        TextView textView4 =  findViewById(R.id.idTipotext);
+        SpannableString mitextoU4 = new SpannableString("Tipo");
+        mitextoU4.setSpan(new UnderlineSpan(), 0, mitextoU4.length(), 0);
+        textView4.setText(mitextoU4);
+
         List<String> barrios = new ArrayList<String>();
         barrios.add("");
         barrios.add("San Alonso");

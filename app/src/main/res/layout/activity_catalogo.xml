@@ -60,16 +60,17 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="170dp"
         app:layout_constraintTop_toBottomOf="@+id/idTituloCatalogo"
         tools:layout_editor_absoluteX="0dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerCatalogo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            android:padding="15dp"
             tools:layout_conversion_absoluteHeight="147dp"
             tools:layout_conversion_absoluteWidth="411dp" />
     </ScrollView>
