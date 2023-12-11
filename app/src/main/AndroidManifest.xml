@@ -20,9 +20,6 @@
             android:name=".VisorArrendadorActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrarseActivity"
-            android:exported="false" />
-        <activity
             android:name=".InmuebleArrendadorActivty"
             android:exported="false" />
         <activity
