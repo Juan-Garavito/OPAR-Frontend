@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity{
         textUsuario = findViewById(R.id.idUsuario);
         textContraseña = findViewById(R.id.idContraseña);
         btnIngresar = findViewById(R.id.idIngresar);
-        btnRegistrar = findViewById(R.id.idRegistrarse);
 
        mostrarContraseña.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
            @Override
@@ -84,14 +83,6 @@ public class LoginActivity extends AppCompatActivity{
                         Log.e("Error 1 ", "Esta fallando ",t);
                     }
                 });
-            }
-        });
-
-        btnRegistrar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, RegistrarseActivity.class);
-                startActivity(intent);
             }
         });
     }

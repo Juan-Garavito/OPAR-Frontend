@@ -7,11 +7,78 @@
     android:background="#021A26"
     tools:context=".AgregarImagenesActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mostrarImagenes"
+        android:layout_width="320dp"
+        android:layout_height="210dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:paddingLeft="5dp"
+        android:paddingTop="10dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView28">
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="27dp"
+            android:layout_height="31dp"
+            android:src="@mipmap/carrusel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/idBuscarInmueble"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton4"
+            android:layout_width="27dp"
+            android:layout_height="31dp"
+            android:rotationY="180"
+            android:src="@mipmap/carrusel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/idBuscarInmueble"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/idMostarInmueble"
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </androidx.viewpager2.widget.ViewPager2>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btnAbrirGaleria"
+        android:layout_width="294dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="36dp"
+        android:backgroundTint="#609966"
+        android:text="Abrir galeria "
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textColorLink="#FFFFFF"
+        android:textSize="16sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView26" />
+
     <Button
         android:id="@+id/btnPublicarInmueble"
         android:layout_width="294dp"
         android:layout_height="59dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#609966"
         android:text="Publicar inmueble"
         android:textColor="#FFFFFF"
@@ -23,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView12" />
+        app:layout_constraintTop_toBottomOf="@+id/mostrarImagenes" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar9"
@@ -62,17 +129,6 @@
         app:layout_constraintVertical_bias="0.551"
         app:srcCompat="@drawable/logo_blanco" />
 
-    <ImageView
-        android:id="@+id/imageView12"
-        android:layout_width="148dp"
-        android:layout_height="149dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView26"
-        app:srcCompat="@drawable/logo_galeria" />
-
     <TextView
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
@@ -84,4 +140,16 @@
         app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar9" />
+
+    <TextView
+        android:id="@+id/textView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Visualización de las imágenes que vas a subir:"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.192"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAbrirGaleria" />
 </androidx.constraintlayout.widget.ConstraintLayout>

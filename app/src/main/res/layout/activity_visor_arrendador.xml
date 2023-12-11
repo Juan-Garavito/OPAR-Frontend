@@ -10,39 +10,32 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar8"
-        android:layout_width="413dp"
-        android:layout_height="74dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="#609966"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:theme="?attr/actionBarTheme" />
 
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="84dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/graduate"
         android:text="OPAR"
         android:textColor="#FFFFFF"
         android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toEndOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/toolbar8"
-        app:layout_constraintVertical_bias="0.551" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar8" />
 
     <ImageView
         android:id="@+id/imageView9"
         android:layout_width="66dp"
         android:layout_height="53dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/toolbar8"
-        app:layout_constraintStart_toStartOf="@+id/toolbar8"
-        app:layout_constraintTop_toTopOf="@+id/toolbar8"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_blanco" />
 
     <TextView
@@ -67,9 +60,10 @@
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idTituloDireccion"
-        app:layout_constraintVertical_bias="0.729">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -268,96 +262,6 @@
                 android:textColorLink="@color/white" />
 
             <TextView
-                android:id="@+id/textView19"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="48dp"
-                android:layout_marginTop="12dp"
-                android:fontFamily="@font/graduate"
-                android:text="Datos del Arrendador"
-                android:textAlignment="viewStart"
-                android:textColor="@color/white"
-                android:textColorHighlight="@color/white"
-                android:textColorHint="@color/white"
-                android:textColorLink="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="112dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="112dp"
-                android:background="#609766"
-                android:foregroundGravity="center"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="5dp"
-                android:textAlignment="center">
-
-                <TextView
-                    android:id="@+id/textView20"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/graduate"
-                    android:padding="2dp"
-                    android:text="Usuario"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/white"
-                    android:textColorHighlight="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textColorLink="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/idUsuarioInmueble"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:padding="4dp"
-                    android:text="Juang"
-                    android:textColor="@color/white"
-                    android:textColorHighlight="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textColorLink="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/textView22"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/graduate"
-                    android:padding="2dp"
-                    android:text="Telefono"
-                    android:textAlignment="textStart"
-                    android:textColor="@color/white"
-                    android:textColorHighlight="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textColorLink="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/idTelefonoInmueble"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif"
-                    android:padding="4dp"
-                    android:text="3142509802"
-                    android:textColor="@color/white"
-                    android:textColorHighlight="@color/white"
-                    android:textColorHint="@color/white"
-                    android:textColorLink="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
-            <TextView
                 android:id="@+id/textView24"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -378,71 +282,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/idBtnLlamar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_marginTop="0dp"
-                    android:layout_marginBottom="0dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#FFFFFF"
-                    android:fontFamily="@font/graduate"
-                    android:text="Llamar"
-                    android:textColor="#609666"
-                    android:textSize="14sp"
-                    android:visibility="gone"
-                    app:cornerRadius="0dp" />
-
-                <Button
-                    android:id="@+id/idBtnOpinar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#609666"
-                    android:fontFamily="@font/graduate"
-                    android:text="Opinar"
-                    android:textSize="14sp"
-                    android:visibility="gone"
-                    app:cornerRadius="0dp" />
-
-                <Button
-                    android:id="@+id/idBtnEditarOpinion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="#609666"
-                    android:fontFamily="@font/graduate"
-                    android:text="Editar Opinion"
-                    android:textSize="14sp"
-                    android:visibility="gone"
-                    app:cornerRadius="0dp" />
-
-                <Button
-                    android:id="@+id/idBtnEliminarOpinion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="2dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:fontFamily="@font/graduate"
-                    android:text="Eliminar"
-                    android:textColor="#609666"
-                    android:textColorHighlight="#609666"
-                    android:textColorHint="#609666"
-                    android:textColorLink="#609666"
-                    android:textSize="14sp"
-                    android:visibility="gone"
-                    app:cornerRadius="0dp" />
-            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

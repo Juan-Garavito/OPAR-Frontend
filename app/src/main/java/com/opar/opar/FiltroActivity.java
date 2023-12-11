@@ -14,14 +14,28 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import Modelos.Arrendatario;
+import Modelos.BarrioDTO;
 import Modelos.Ciudadano;
+import Peticiones.ApiCiudadano;
+import Peticiones.ApiCliente;
+import Peticiones.ApiOpinion;
 import Storage.CiudadanoStorage;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FiltroActivity extends AppCompatActivity {
 
@@ -60,8 +74,6 @@ public class FiltroActivity extends AppCompatActivity {
 
         List<String> barrios = new ArrayList<String>();
         barrios.add("");
-        barrios.add("San Alonso");
-        barrios.add("San Francisco");
 
         List<String> tipos = new ArrayList<String>();
         tipos.add("");
@@ -70,6 +82,22 @@ public class FiltroActivity extends AppCompatActivity {
         tipos.add("Apartaestudio");
         tipos.add("Habitacion");
 
+        Call<List<BarrioDTO>> call = ApiCliente.GetCliente().create(ApiOpinion.class).ObtenerBarrios();
+
+        call.enqueue(new Callback<List<BarrioDTO>>() {
+            @Override
+            public void onResponse(Call<List<BarrioDTO>> call, Response<List<BarrioDTO>> response) {
+                List<BarrioDTO> barriosDTO = response.body();
+                for(BarrioDTO barrio : barriosDTO){
+                    barrios.add(barrio.getBarrio());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<BarrioDTO>> call, Throwable t) {
+
+            }
+        });
 
         Spinner barrio = findViewById(R.id.idBarrio);
         Spinner tipo = findViewById(R.id.idTipo);
@@ -78,12 +106,17 @@ public class FiltroActivity extends AppCompatActivity {
         barrio.setAdapter(adapter);
         tipo.setAdapter(adapter2);
 
+
+
         Button btnFiltrar = findViewById(R.id.idBtnFiltrar);
         TextView precio = findViewById(R.id.idPrecio);
         TextView habitaciones = findViewById(R.id.idHabitaciones);
         RadioButton servicioSi = findViewById(R.id.idServiciosSi);
         RadioButton servicioNo = findViewById(R.id.idServiciosNo);
         TextView area = findViewById(R.id.idArea);
+
+
+
 
         btnFiltrar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -41,15 +41,6 @@ public class ImagenAdapter extends RecyclerView.Adapter<ImagenAdapter.ImagenView
                 .load(imagen.getUrl())
                 .into(holder.ivImagen);
 
-        // Agregar OnClickListener a la imagen
-        holder.ivImagen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Aquí puedes iniciar la nueva actividad
-                Intent intent = new Intent(v.getContext(), InmuebleArrendadorActivty.class);
-                v.getContext().startActivity(intent);
-            }
-        });
     }
 
     @Override

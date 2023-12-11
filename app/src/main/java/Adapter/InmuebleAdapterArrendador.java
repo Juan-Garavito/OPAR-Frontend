@@ -1,5 +1,8 @@
 package Adapter;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.opar.opar.R;
+import com.opar.opar.VisorActivity;
+import com.opar.opar.VisorArrendadorActivity;
+
 import Modelos.Inmueble;
 
 import java.util.List;
@@ -36,7 +42,18 @@ public class InmuebleAdapterArrendador extends RecyclerView.Adapter<InmuebleAdap
 
         // Configurar el ViewPager2
         holder.viewPager.setAdapter(new ImagenAdapter(inmueble.getImagenes()));
+
+        holder.itemView.setOnClickListener(v -> {
+            Log.e("Vista del Visor", inmueble.toString());
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("inmueble", inmueble);
+            Intent intent = new Intent(v.getContext(), VisorArrendadorActivity.class);
+            intent.putExtras(bundle);
+            v.getContext().startActivity(intent);
+        });
     }
+
+
 
     @Override
     public int getItemCount() {

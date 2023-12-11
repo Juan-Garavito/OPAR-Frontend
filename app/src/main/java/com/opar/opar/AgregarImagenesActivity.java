@@ -19,14 +19,19 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.cloudinary.android.MediaManager;
+import com.cloudinary.android.callback.ErrorInfo;
+import com.cloudinary.android.callback.UploadCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import Dropbox.DropboxUploader;
+
 
 public class AgregarImagenesActivity extends AppCompatActivity {
 
@@ -42,10 +47,12 @@ public class AgregarImagenesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         idInmueble = intent.getStringExtra("ID_INMUEBLE");
 
+        initConfig();
+
         //Para acceder a la galeria
 
-        ImageView imageView = findViewById(R.id.imageView12);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        Button abrir = findViewById(R.id.btnAbrirGaleria);
+        abrir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
@@ -59,25 +66,38 @@ public class AgregarImagenesActivity extends AppCompatActivity {
         Button publicarInmueble = findViewById(R.id.btnPublicarInmueble);
 
         publicarInmueble.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
                 for (Uri imageUri : imageUris) {
-                    String mimeType = getContentResolver().getType(imageUri);
-                    String extension = MimeTypeMap.getSingleton().getExtensionFromMimeType(mimeType);
-                    String path = "/" + imageUri.getLastPathSegment() + "." + extension;
-                    Log.d("DEBUG2", "Subiendo imagen: " + imageUri.toString() + " a Dropbox: " + path);
-                    new DropboxUploader(AgregarImagenesActivity.this) {
+                    MediaManager.get().upload(imageUri).callback(new UploadCallback() {
                         @Override
-                        protected void onPostExecute(String url) {
-                            // Después de subir la imagen a Dropbox, haz la solicitud HTTP POST a tu API
+                        public void onStart(String requestId) {
+                            // Puedes manejar el inicio de la carga aquí
+                        }
+
+                        @Override
+                        public void onProgress(String requestId, long bytes, long totalBytes) {
+                            // Puedes manejar el progreso de la carga aquí
+                        }
+
+                        @Override
+                        public void onSuccess(String requestId, Map resultData) {
+                            Log.e("Subido", resultData.get("url").toString());
+                            String url = resultData.get("url").toString();
                             int inmueble = Integer.parseInt(idInmueble);
                             agregarImagen(url, inmueble);
-
-
                         }
-                    }.execute(path, imageUri.toString());
+
+                        @Override
+                        public void onError(String requestId, ErrorInfo error) {
+                            Toast.makeText(AgregarImagenesActivity.this, "Ocurrió un error " + error.getDescription(), Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onReschedule(String requestId, ErrorInfo error) {
+                            Toast.makeText(AgregarImagenesActivity.this, "Ocurrió un error " + error.getDescription(), Toast.LENGTH_SHORT).show();
+                        }
+                    }).dispatch();
                 }
                 Toast.makeText(AgregarImagenesActivity.this, "Inmueble publicado", Toast.LENGTH_SHORT).show();
 
@@ -86,6 +106,15 @@ public class AgregarImagenesActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void initConfig() {
+        Map<String, String> config = new HashMap<>();
+        config.put("cloud_name", "dfeegbmq0");
+        config.put("api_key", "422432522231969");
+        config.put("api_secret", "nfxJZbJ315KQ3MWbbbn_EOZzWtc");
+        config.put("secure", "true"); // Cambiado a String
+        MediaManager.init(this, config);
     }
 
     private void agregarImagen(String url, int inmueble) {

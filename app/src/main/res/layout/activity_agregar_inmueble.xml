@@ -18,6 +18,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:text="Descripción:"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,6 +31,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="24dp"
             android:text="Área:"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,6 +44,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="28dp"
             android:text="Cantidad de habitaciones:"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,6 +57,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:text="Valor del alquiler:"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -66,6 +70,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="28dp"
             android:text="Tiene servicios públicos:"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -78,6 +83,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
             android:text="Barrio:"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -97,25 +103,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
                 android:text="Apartaestudio"
+                android:textColor="#FFFFFF"
                 android:textColorHighlight="#609966" />
 
             <RadioButton
                 android:id="@+id/radioButtonApartamento"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
-                android:text="Apartamento" />
+                android:text="Apartamento"
+                android:textColor="#FFFFFF" />
 
             <RadioButton
                 android:id="@+id/radioButtonHabitacion"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
-                android:text="Habitación" />
+                android:text="Habitación"
+                android:textColor="#FFFFFF" />
 
             <RadioButton
                 android:id="@+id/radioButtonCasa"
                 android:layout_width="wrap_content"
                 android:layout_height="34dp"
-                android:text="Casa" />
+                android:text="Casa"
+                android:textColor="#FFFFFF" />
 
         </RadioGroup>
 
@@ -160,6 +170,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="12dp"
             android:text="Para agregar el inmueble, necesitaremos la siguiente información:"
+            android:textColor="#FFFFFF"
             android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.326"
@@ -173,6 +184,7 @@
             android:layout_marginStart="28dp"
             android:layout_marginTop="20dp"
             android:text="Tipo de inmueble:"
+            android:textColor="#FFFFFF"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -205,6 +217,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:text="Dirección:"
+            android:textColor="#FFFFFF"
             android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -216,6 +229,8 @@
             android:layout_height="42dp"
             android:layout_marginTop="4dp"
             android:hint="Por ejemplo: Cr 24 #8-89"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.609"
             app:layout_constraintStart_toStartOf="parent"
@@ -226,7 +241,7 @@
             android:layout_width="228dp"
             android:layout_height="31dp"
             android:layout_marginTop="24dp"
-            android:backgroundTint="#609966"
+            android:background="#609966"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.152"
             app:layout_constraintStart_toStartOf="parent"
@@ -240,6 +255,7 @@
             android:layout_marginTop="12dp"
             android:ems="10"
             android:inputType="number"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/textView21"
@@ -288,6 +304,7 @@
             android:ems="10"
             android:hint="Por ejemplo: 900000"
             android:inputType="numberDecimal"
+            android:textColorHint="#FFFFFF"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -304,13 +321,15 @@
                 android:id="@+id/radioButton6"
                 android:layout_width="wrap_content"
                 android:layout_height="27dp"
-                android:text="Si" />
+                android:text="Si"
+                android:textColor="#FFFFFF" />
 
             <RadioButton
                 android:id="@+id/radioButton5"
                 android:layout_width="wrap_content"
                 android:layout_height="28dp"
-                android:text="No" />
+                android:text="No"
+                android:textColor="#FFFFFF" />
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

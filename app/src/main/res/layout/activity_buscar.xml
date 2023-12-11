@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/graduate"
-        android:text="¿QUE BUSCAS HOY?"
+        android:text="¿QUÉ BUSCAS HOY?"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/idFiltrar">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/imageButton1"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginLeft="0dp"
@@ -104,7 +104,7 @@
             app:srcCompat="@mipmap/filtro_logo_foreground" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textView100"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"

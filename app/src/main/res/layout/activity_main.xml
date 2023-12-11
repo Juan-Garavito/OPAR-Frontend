@@ -51,7 +51,7 @@
         android:backgroundTint="@color/design_default_color_background"
         android:backgroundTintMode="screen"
         android:ems="10"
-        android:fontFamily="@font/graduate"
+        android:fontFamily="sans-serif"
         android:hint="Usuario"
         android:inputType="text|textEmailAddress"
         android:paddingLeft="10sp"
@@ -75,7 +75,7 @@
         android:backgroundTint="@color/design_default_color_background"
         android:backgroundTintMode="screen"
         android:ems="10"
-        android:fontFamily="@font/graduate"
+        android:fontFamily="sans-serif"
         android:hint="Contraseña"
         android:inputType="text|textPassword"
         android:paddingLeft="10sp"
@@ -94,7 +94,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="4dp"
         android:buttonTint="@color/white"
-        android:fontFamily="@font/graduate"
+        android:fontFamily="sans-serif"
         android:text="Mostrar Contraseña"
         android:textColor="@color/white"
         android:textColorHighlight="@color/white"
@@ -104,23 +104,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idContraseña" />
-
-    <Button
-        android:id="@+id/idRegistrarse"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/white"
-        android:fontFamily="@font/graduate"
-        android:text="Registrarse"
-        android:textColor="#609966"
-        android:textColorHint="#609966"
-        app:cornerRadius="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idIngresar"
-        app:layout_constraintVertical_bias="0.051" />
 
     <Button
         android:id="@+id/idIngresar"

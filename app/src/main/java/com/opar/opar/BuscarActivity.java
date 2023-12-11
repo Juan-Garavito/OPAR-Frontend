@@ -22,7 +22,7 @@ public class BuscarActivity extends AppCompatActivity {
         FrameLayout filtrar = findViewById(R.id.idFiltrar);
 
         TextView textView = findViewById(R.id.idTituloBuscarHoy);
-        SpannableString mitextoU = new SpannableString("¿QUE BUSCAS HOY?");
+        SpannableString mitextoU = new SpannableString("¿QUÉ BUSCAS HOY?");
         mitextoU.setSpan(new UnderlineSpan(), 0, mitextoU.length(), 0);
         textView.setText(mitextoU);
 
