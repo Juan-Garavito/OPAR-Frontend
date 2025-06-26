@@ -24,18 +24,12 @@ Para que OPAR funcione correctamente, necesitarás las siguientes tecnologías y
 - IDE Netbeans
 - Android Studio Giraffe
 
-## AUTHORS: Juan Garavito -  Jerson Cañon 
-
-## USER INSTRUCTIONS
-
-1. Instalar el archivo OPAR_V1.apk 
-2. Ingresar con estas credenciales:
-   - Usuario:  FRoM
-   - Contraseña: admin
-
-### Instrucciones para hacer funcionar el proyecto
+## CÓDIGO FUENTE
 
 Para acceder al código fuente del proyecto, puedes visitar los siguientes repositorios:
 
-- Backend: https://github.com/JulianCastillo14/OPAR-backend.git
-- Frontend: https://github.com/Juan-Garavito/OPAR.git
+- Backend: [https://github.com/JulianCastillo14/OPAR-backend.git](https://github.com/JulianCastillo14/OPAR-backend.git)
+- Frontend: [https://github.com/Juan-Garavito/OPAR-Frontend.git](https://github.com/Juan-Garavito/OPAR-Frontend.git)
+
+## AUTHORS: 
+Juan Garavito -  Jerson Cañon 
